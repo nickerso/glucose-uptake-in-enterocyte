@@ -1,0 +1,61 @@
+<?xml version='1.0'?>
+<!-- // Data from: Thorsen, K., Drengstig, T., & Ruoff, P. (2014). Transepithelial glucose transport and Na+/K+ homeostasis in enterocytes: an integrative model. American Journal of Physiology-Cell Physiology, 307(4), C320-C337.-->
+<model name="Parameters" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <component name="parameters">
+        <variable initial_value="-1" name="z_Cl" public_interface="out" units="dimensionless"/>
+        <variable initial_value="1" name="z_Na" public_interface="out" units="dimensionless"/>
+        <variable initial_value="1" name="z_k" public_interface="out" units="dimensionless"/>
+        <variable initial_value="96485" name="F" public_interface="out" units="C_per_mol"/>
+        <variable initial_value="8.314" name="R" public_interface="out" units="J_per_K_per_mol"/>
+        <variable initial_value="310" name="T" public_interface="out" units="kelvin"/>
+        <variable initial_value="1e-5" name="capacitance" public_interface="out" units="uF"/>
+        <variable initial_value="8.4e-10" name="A_Apical" public_interface="out" units="m2"/>
+        <variable initial_value="5e-10" name="A_Basol" public_interface="out" units="m2"/>
+        <variable initial_value="5e-16" name="v_cell" public_interface="out" units="m3"/>
+        <variable initial_value="4.5e-8" name="P_P_Na" public_interface="out" units="m_per_s"/>
+        <variable initial_value="1e-6" name="P_P_k" public_interface="out" units="m_per_s"/>
+        <variable initial_value="3e-8" name="P_P_Cl" public_interface="out" units="m_per_s"/>
+        <!--SGLT1 parameters are from 6 states model
+Original Paper: Xing-Zhen Chen, Michael J Coady, Francis Jackson, Alfred Berteloot, and Jean-Yves Lapointe. Thermodynamic determination of the Na+: glucose coupling ratio for the human sglt1 cotransporter.        -->
+        <variable initial_value="14000" name="k0_12" public_interface="out" units="per_M2_per_second"/>
+        <variable initial_value="300" name="k0_21" public_interface="out" units="per_second"/>
+        <variable initial_value="15000" name="k0_23" public_interface="out" units="per_M_per_second"/>
+        <variable initial_value="20" name="k0_32" public_interface="out" units="per_second"/>
+        <variable initial_value="0.1" name="k0_25" public_interface="out" units="per_second"/>
+        <variable initial_value="0.01" name="k0_52" public_interface="out" units="per_second"/>
+        <variable initial_value="50" name="k0_34" public_interface="out" units="per_second"/>
+        <variable initial_value="50" name="k0_43" public_interface="out" units="per_second"/>
+        <variable initial_value="6" name="k0_45" public_interface="out" units="per_second"/>
+        <variable initial_value="450" name="k0_54" public_interface="out" units="per_M_per_second"/>
+        <variable initial_value="10" name="k0_56" public_interface="out" units="per_second"/>
+        <variable initial_value="2000" name="k0_65" public_interface="out" units="per_M2_per_second"/>
+        <variable initial_value="25" name="k0_61" public_interface="out" units="per_second"/>
+        <variable initial_value="600" name="k0_16" public_interface="out" units="per_second"/>
+        <variable initial_value="0.7" name="delta" public_interface="out" units="dimensionless"/>
+        <variable initial_value="0.3" name="alpha_p" public_interface="out" units="dimensionless"/>
+        <variable initial_value="0" name="alpha_pp" public_interface="out" units="dimensionless"/>
+        <variable initial_value="2" name="n" public_interface="out" units="dimensionless"/>
+        <variable initial_value="-2" name="z_c" public_interface="out" units="dimensionless"/>
+        <variable name="v_mc" public_interface="in" units="volt"/>
+        <variable name="mu" public_interface="out" units="dimensionless"/>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <ci>mu</ci>
+                <apply>
+                    <divide/>
+                    <apply>
+                        <times/>
+                        <ci>F</ci>
+                        <ci>v_mc</ci>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <ci>R</ci>
+                        <ci>T</ci>
+                    </apply>
+                </apply>
+            </apply>
+        </math>
+    </component>
+</model>

@@ -1,0 +1,83 @@
+<?xml version='1.0'?>
+<!--Original Paper: Benjamin, B. A., & Johnson, E. A. (1997). A quantitative description of the Na-K-2Cl cotransporter and its conformity to experimental data. American Journal of Physiology-Renal Physiology, 273(3), F473-F482.
+ Data from: Fong, S., Chiorini, J. A., Sneyd, J., & Suresh, V. (2016). Computational modeling of epithelial fluid and ion transport in the parotid duct after transfection of human aquaporin-1. American Journal of Physiology-Gastrointestinal and Liver Physiology, 312(2), G153-G163.-->
+<model name="NaKCC_flux" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <component name="NaKCC">
+        <variable name="A_Apical" public_interface="in" units="m2"/>
+        <variable name="S_C" public_interface="out" units="M"/>
+        <variable name="J_NaKCC" public_interface="out" units="umol_per_s"/>
+        <variable name="I_NaKCC" public_interface="out" units="uA"/>
+        <variable name="Na_i" public_interface="in" units="M"/>
+        <variable name="K_i" public_interface="in" units="M"/>
+        <variable name="Cl_i" public_interface="in" units="M"/>
+        <variable name="F" public_interface="in" units="C_per_mol"/>
+        <variable name="u_NaKCC" public_interface="out" units="per_second"/>
+        <variable initial_value="157.55" name="gamma_1" public_interface="out" units="per_second2"/>
+        <variable initial_value="2e7" name="gamma_2" public_interface="out" units="per_M4_per_second2"/>
+        <variable initial_value="1.03" name="gamma_3" public_interface="out" units="per_second"/>
+        <variable initial_value="1.38e6" name="gamma_4" public_interface="out" units="per_M4_per_second"/>
+        <variable initial_value="1e-9" name="alpha_NaKCC" public_interface="out" units="mole_per_m2"/>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <ci>S_C</ci>
+                <apply>
+                    <times/>
+                    <ci>Na_i</ci>
+                    <ci>Cl_i</ci>
+                    <ci>Cl_i</ci>
+                    <ci>K_i</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>u_NaKCC</ci>
+                <apply>
+                    <divide/>
+                    <apply>
+                        <minus/>
+                        <ci>gamma_1</ci>
+                        <apply>
+                            <times/>
+                            <ci>gamma_2</ci>
+                            <ci>S_C</ci>
+                        </apply>
+                    </apply>
+                    <apply>
+                        <plus/>
+                        <ci>gamma_3</ci>
+                        <apply>
+                            <times/>
+                            <ci>gamma_4</ci>
+                            <ci>S_C</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <!--1e6 is for unit consistency in order to change mole to Micormole -->
+            <apply>
+                <eq/>
+                <ci>J_NaKCC</ci>
+                <apply>
+                    <times/>
+                    <apply>
+                        <minus/>
+                        <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
+                    </apply>
+                    <ci>alpha_NaKCC</ci>
+                    <ci>u_NaKCC</ci>
+                    <ci>A_Apical</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>I_NaKCC</ci>
+                <apply>
+                    <times/>
+                    <ci>J_NaKCC</ci>
+                    <ci>F</ci>
+                </apply>
+            </apply>
+        </math>
+    </component>
+</model>

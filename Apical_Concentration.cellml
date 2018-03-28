@@ -1,0 +1,10 @@
+<?xml version='1.0'?>
+<model name="Apical_Concentrations" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <component name="Apical_concentrations">
+        <variable initial_value="105e-3" name="Na_m" public_interface="out" units="M"/>
+        <variable initial_value="4e-3" name="K_m" public_interface="out" units="M"/>
+        <variable initial_value="50e-3" name="glucose_m" public_interface="out" units="M"/>
+        <variable initial_value="106e-3" name="Cl_m" public_interface="out" units="M"/>
+        <variable initial_value="3e-3" name="HCO3_m" public_interface="out" units="M"/>
+    </component>
+</model>

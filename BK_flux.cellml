@@ -1,0 +1,102 @@
+<?xml version='1.0'?>
+<!--Original Paper: Tabak, Joël, et al. "Low dose of dopamine may stimulate prolactin secretion by increasing fast potassium currents." Journal of computational neuroscience 22.2 (2007): 211-222.
+ Link in Exposure: https://models.physiomeproject.org/exposure/bdf9578fb585b949055c001c756ac822/tabak_toporikova_freeman_bertram_2007_a.cellml/view-->
+<model name="BK_flux" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <component name="BK">
+        <variable name="z_k" public_interface="in" units="dimensionless"/>
+        <variable name="R" public_interface="in" units="J_per_K_per_mol"/>
+        <variable name="T" public_interface="in" units="kelvin"/>
+        <variable name="K_i" public_interface="in" units="M"/>
+        <variable name="K_m" public_interface="in" units="M"/>
+        <variable name="Ca_i" public_interface="in" units="M"/>
+        <variable name="V_A_BK" public_interface="out" units="volt"/>
+        <variable name="v_mc" public_interface="in" units="volt"/>
+        <variable name="J_BK" public_interface="out" units="umol_per_s"/>
+        <variable name="I_BK" public_interface="out" units="uA"/>
+        <variable name="A_Apical" public_interface="in" units="m2"/>
+        <variable name="F" public_interface="in" units="C_per_mol"/>
+        <variable initial_value="30" name="G_BK" public_interface="out" units="S"/>
+        <variable name="P_BK" public_interface="out" units="dimensionless"/>
+        <variable initial_value="0.3e-3" name="K_s_BK" public_interface="out" units="M"/>
+        <variable initial_value="1.7" name="eta" public_interface="out" units="dimensionless"/>
+        <variable initial_value="0.1" name="alpha_BK" public_interface="out" units="per_m2"/>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <ci>P_BK</ci>
+                <apply>
+                    <divide/>
+                    <cn cellml:units="dimensionless">1</cn>
+                    <apply>
+                        <plus/>
+                        <cn cellml:units="dimensionless">1</cn>
+                        <apply>
+                            <power/>
+                            <apply>
+                                <divide/>
+                                <ci>K_s_BK</ci>
+                                <ci>Ca_i</ci>
+                            </apply>
+                            <ci>eta</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>V_A_BK</ci>
+                <apply>
+                    <times/>
+                    <apply>
+                        <divide/>
+                        <apply>
+                            <times/>
+                            <ci>R</ci>
+                            <ci>T</ci>
+                        </apply>
+                        <apply>
+                            <times/>
+                            <ci>z_k</ci>
+                            <ci>F</ci>
+                        </apply>
+                    </apply>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <divide/>
+                            <ci>K_m</ci>
+                            <ci>K_i</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <!-- 1e6 is for unit consistency in order to change Ampere to MicorAmpere-->
+            <apply>
+                <eq/>
+                <ci>I_BK</ci>
+                <apply>
+                    <times/>
+                    <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
+                    <ci>G_BK</ci>
+                    <ci>alpha_BK</ci>
+                    <ci>P_BK</ci>
+                    <ci>A_Apical</ci>
+                    <apply>
+                        <minus/>
+                        <ci>v_mc</ci>
+                        <ci>V_A_BK</ci>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>J_BK</ci>
+                <apply>
+                    <divide/>
+                    <ci>I_BK</ci>
+                    <ci>F</ci>
+                </apply>
+            </apply>
+        </math>
+    </component>
+</model>

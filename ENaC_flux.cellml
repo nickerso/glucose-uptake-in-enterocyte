@@ -1,0 +1,79 @@
+<?xml version='1.0'?>
+<!--Original Paper:Hodgkin, Alan L., and Andrew F. Huxley. "A quantitative description of membrane current and its application to conduction and excitation in nerve." The Journal of physiology 117.4 (1952): 500-544.
+Link in Exposure:-->
+<model name="ENaC_flux" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <component name="ENaC">
+        <variable name="z_Na" public_interface="in" units="dimensionless"/>
+        <variable name="R" public_interface="in" units="J_per_K_per_mol"/>
+        <variable name="T" public_interface="in" units="kelvin"/>
+        <variable name="Na_i" public_interface="in" units="M"/>
+        <variable name="Na_m" public_interface="in" units="M"/>
+        <variable name="V_A_Na" public_interface="out" units="volt"/>
+        <variable name="v_mc" public_interface="in" units="volt"/>
+        <variable name="J_ENaC" public_interface="out" units="umol_per_s"/>
+        <variable name="I_ENaC" public_interface="out" units="uA"/>
+        <variable name="A_Apical" public_interface="in" units="m2"/>
+        <variable name="F" public_interface="in" units="C_per_mol"/>
+        <variable initial_value="9" name="G_ENaC" public_interface="out" units="S"/>
+        <variable initial_value="0.1" name="alpha_ENaC" public_interface="out" units="per_m2"/>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <ci>J_ENaC</ci>
+                <apply>
+                    <divide/>
+                    <ci>I_ENaC</ci>
+                    <ci>F</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>V_A_Na</ci>
+                <apply>
+                    <times/>
+                    <apply>
+                        <divide/>
+                        <apply>
+                            <times/>
+                            <ci>R</ci>
+                            <ci>T</ci>
+                        </apply>
+                        <apply>
+                            <times/>
+                            <ci>z_Na</ci>
+                            <ci>F</ci>
+                        </apply>
+                    </apply>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <divide/>
+                            <ci>Na_m</ci>
+                            <ci>Na_i</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <!-- 1e6 is for unit consistency in order to change Ampere to MicorAmpere  -->
+            <apply>
+                <eq/>
+                <ci>I_ENaC</ci>
+                <apply>
+                    <times/>
+                    <apply>
+                        <minus/>
+                        <cn cellml:units="dimensionless" type="e-notation">1<sep/>+6</cn>
+                    </apply>
+                    <ci>G_ENaC</ci>
+                    <ci>alpha_ENaC</ci>
+                    <ci>A_Apical</ci>
+                    <apply>
+                        <minus/>
+                        <ci>v_mc</ci>
+                        <ci>V_A_Na</ci>
+                    </apply>
+                </apply>
+            </apply>
+        </math>
+    </component>
+</model>

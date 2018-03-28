@@ -1,0 +1,116 @@
+<?xml version='1.0'?>
+<model name="NBC_flux" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <component name="NBC">
+        <variable name="A_Apical" public_interface="in" units="m2"/>
+        <variable name="v_sc" public_interface="in" units="volt"/>
+        <variable name="v_cell" public_interface="in" units="m3"/>
+        <variable name="Na_i" public_interface="in" units="M"/>
+        <variable name="Na_s" public_interface="in" units="M"/>
+        <variable name="HCO3_i" public_interface="in" units="M"/>
+        <variable name="HCO3_s" public_interface="in" units="M"/>
+        <variable initial_value="0.01" name="g_NBC" public_interface="out" units="S_per_m2"/>
+        <variable name="F" public_interface="in" units="C_per_mol"/>
+        <variable name="R" public_interface="in" units="J_per_K_per_mol"/>
+        <variable name="T" public_interface="in" units="kelvin"/>
+        <variable initial_value="2" name="n" units="dimensionless"/>
+        <variable name="E_NBC" public_interface="out" units="volt"/>
+        <variable name="J_NBC_Na" public_interface="out" units="umol_per_s"/>
+        <variable name="J_NBC_HCO3" public_interface="out" units="umol_per_s"/>
+        <variable name="I_NBC_Na" public_interface="out" units="uA"/>
+        <variable name="I_NBC_HCO3" public_interface="out" units="uA"/>
+        <variable initial_value="1e-18" name="eps" units="M"/>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <ci>E_NBC</ci>
+                <apply>
+                    <times/>
+                    <apply>
+                        <divide/>
+                        <apply>
+                            <times/>
+                            <ci>R</ci>
+                            <ci>T</ci>
+                        </apply>
+                        <apply>
+                            <times/>
+                            <apply>
+                                <minus/>
+                                <cn cellml:units="dimensionless">1</cn>
+                                <ci>n</ci>
+                            </apply>
+                            <ci>F</ci>
+                        </apply>
+                    </apply>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <times/>
+                            <apply>
+                                <divide/>
+                                <ci>Na_s</ci>
+                                <ci>Na_i</ci>
+                            </apply>
+                            <apply>
+                                <power/>
+                                <apply>
+                                    <divide/>
+                                    <ci>HCO3_s</ci>
+                                    <ci>HCO3_i</ci>
+                                </apply>
+                                <cn cellml:units="dimensionless">2</cn>
+                            </apply>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <!--1e6 is for unit consistency in order to change mole to Micormole -->
+            <apply>
+                <eq/>
+                <ci>J_NBC_Na</ci>
+                <apply>
+                    <divide/>
+                    <apply>
+                        <times/>
+                        <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
+                        <ci>g_NBC</ci>
+                        <ci>A_Apical</ci>
+                        <apply>
+                            <minus/>
+                            <ci>E_NBC</ci>
+                            <ci>v_sc</ci>
+                        </apply>
+                    </apply>
+                    <ci>F</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>J_NBC_HCO3</ci>
+                <apply>
+                    <times/>
+                    <cn cellml:units="dimensionless">3.0</cn>
+                    <ci>J_NBC_Na</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>I_NBC_Na</ci>
+                <apply>
+                    <times/>
+                    <ci>J_NBC_Na</ci>
+                    <ci>F</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>I_NBC_HCO3</ci>
+                <apply>
+                    <times/>
+                    <ci>J_NBC_HCO3</ci>
+                    <ci>F</ci>
+                </apply>
+            </apply>
+        </math>
+    </component>
+</model>

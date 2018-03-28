@@ -1,0 +1,297 @@
+<?xml version='1.0'?>
+<!--Link in workspace: https://models.physiomeproject.org/workspace/2b8
+Original paper: Schultz, S. G. (1980). Basic principles of membrane transport (Vol. 2). CUP Archive.
+ Data from: Thorsen, K., Drengstig, T., & Ruoff, P. (2014). Transepithelial glucose transport and Na+/K+ homeostasis in enterocytes: an integrative model. American Journal of Physiology-Cell Physiology, 307(4), C320-C337.-->
+<model name="my_model" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <component name="Paracellular_Diffusion">
+        <variable name="v_ms" public_interface="in" units="volt"/>
+        <variable name="Na_m" public_interface="in" units="M"/>
+        <variable name="K_m" public_interface="in" units="M"/>
+        <variable name="Cl_m" public_interface="in" units="M"/>
+        <variable name="Na_s" public_interface="in" units="M"/>
+        <variable name="K_s" public_interface="in" units="M"/>
+        <variable name="Cl_s" public_interface="in" units="M"/>
+        <variable name="F" public_interface="in" units="C_per_mol"/>
+        <variable name="z_Na" public_interface="in" units="dimensionless"/>
+        <variable name="z_k" public_interface="in" units="dimensionless"/>
+        <variable name="z_Cl" public_interface="in" units="dimensionless"/>
+        <variable name="R" public_interface="in" units="J_per_K_per_mol"/>
+        <variable name="A_Apical" public_interface="in" units="m2"/>
+        <variable name="T" public_interface="in" units="kelvin"/>
+        <variable name="P_P_Na" public_interface="in" units="m_per_s"/>
+        <variable name="P_P_k" public_interface="in" units="m_per_s"/>
+        <variable name="P_P_Cl" public_interface="in" units="m_per_s"/>
+        <variable name="J_D_P_Na" public_interface="out" units="umol_per_s"/>
+        <variable name="I_D_P_Na" public_interface="out" units="uA"/>
+        <variable name="J_D_P_K" public_interface="out" units="umol_per_s"/>
+        <variable name="I_D_P_K" public_interface="out" units="uA"/>
+        <variable name="J_D_P_Cl" public_interface="out" units="umol_per_s"/>
+        <variable name="I_D_P_Cl" public_interface="out" units="uA"/>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <ci>J_D_P_Na</ci>
+                <apply>
+                    <times/>
+                    <apply>
+                        <divide/>
+                        <apply>
+                            <times/>
+                            <apply>
+                                <divide/>
+                                <apply>
+                                    <times/>
+                                    <apply>
+                                        <minus/>
+                                        <cn cellml:units="litre_umol_per_mol_per_m3" type="e-notation">1<sep/>9</cn>
+                                    </apply>
+                                    <ci>P_P_Na</ci>
+                                    <ci>F</ci>
+                                    <ci>z_Na</ci>
+                                    <ci>v_ms</ci>
+                                </apply>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                            <apply>
+                                <minus/>
+                                <ci>Na_m</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>Na_s</ci>
+                                    <apply>
+                                        <exp/>
+                                        <apply>
+                                            <divide/>
+                                            <apply>
+                                                <times/>
+                                                <ci>z_Na</ci>
+                                                <ci>F</ci>
+                                                <ci>v_ms</ci>
+                                            </apply>
+                                            <apply>
+                                                <times/>
+                                                <ci>R</ci>
+                                                <ci>T</ci>
+                                            </apply>
+                                        </apply>
+                                    </apply>
+                                </apply>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <minus/>
+                            <cn cellml:units="dimensionless">1</cn>
+                            <apply>
+                                <exp/>
+                                <apply>
+                                    <divide/>
+                                    <apply>
+                                        <times/>
+                                        <ci>z_Na</ci>
+                                        <ci>F</ci>
+                                        <ci>v_ms</ci>
+                                    </apply>
+                                    <apply>
+                                        <times/>
+                                        <ci>R</ci>
+                                        <ci>T</ci>
+                                    </apply>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </apply>
+                    <ci>A_Apical</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>I_D_P_Na</ci>
+                <apply>
+                    <times/>
+                    <ci>J_D_P_Na</ci>
+                    <ci>F</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>J_D_P_K</ci>
+                <apply>
+                    <times/>
+                    <apply>
+                        <divide/>
+                        <apply>
+                            <times/>
+                            <apply>
+                                <divide/>
+                                <apply>
+                                    <times/>
+                                    <apply>
+                                        <minus/>
+                                        <cn cellml:units="litre_umol_per_mol_per_m3" type="e-notation">1<sep/>9</cn>
+                                    </apply>
+                                    <ci>P_P_k</ci>
+                                    <ci>F</ci>
+                                    <ci>z_k</ci>
+                                    <ci>v_ms</ci>
+                                </apply>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                            <apply>
+                                <minus/>
+                                <ci>K_m</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>K_s</ci>
+                                    <apply>
+                                        <exp/>
+                                        <apply>
+                                            <divide/>
+                                            <apply>
+                                                <times/>
+                                                <ci>z_k</ci>
+                                                <ci>F</ci>
+                                                <ci>v_ms</ci>
+                                            </apply>
+                                            <apply>
+                                                <times/>
+                                                <ci>R</ci>
+                                                <ci>T</ci>
+                                            </apply>
+                                        </apply>
+                                    </apply>
+                                </apply>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <minus/>
+                            <cn cellml:units="dimensionless">1</cn>
+                            <apply>
+                                <exp/>
+                                <apply>
+                                    <divide/>
+                                    <apply>
+                                        <times/>
+                                        <ci>z_k</ci>
+                                        <ci>F</ci>
+                                        <ci>v_ms</ci>
+                                    </apply>
+                                    <apply>
+                                        <times/>
+                                        <ci>R</ci>
+                                        <ci>T</ci>
+                                    </apply>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </apply>
+                    <ci>A_Apical</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>I_D_P_K</ci>
+                <apply>
+                    <times/>
+                    <ci>J_D_P_K</ci>
+                    <ci>F</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>J_D_P_Cl</ci>
+                <apply>
+                    <times/>
+                    <apply>
+                        <divide/>
+                        <apply>
+                            <times/>
+                            <apply>
+                                <divide/>
+                                <apply>
+                                    <times/>
+                                    <apply>
+                                        <minus/>
+                                        <cn cellml:units="litre_umol_per_mol_per_m3" type="e-notation">1<sep/>9</cn>
+                                    </apply>
+                                    <ci>P_P_Cl</ci>
+                                    <ci>F</ci>
+                                    <ci>z_Cl</ci>
+                                    <ci>v_ms</ci>
+                                </apply>
+                                <apply>
+                                    <times/>
+                                    <ci>R</ci>
+                                    <ci>T</ci>
+                                </apply>
+                            </apply>
+                            <apply>
+                                <minus/>
+                                <ci>Cl_m</ci>
+                                <apply>
+                                    <times/>
+                                    <ci>Cl_s</ci>
+                                    <apply>
+                                        <exp/>
+                                        <apply>
+                                            <divide/>
+                                            <apply>
+                                                <times/>
+                                                <ci>z_Cl</ci>
+                                                <ci>F</ci>
+                                                <ci>v_ms</ci>
+                                            </apply>
+                                            <apply>
+                                                <times/>
+                                                <ci>R</ci>
+                                                <ci>T</ci>
+                                            </apply>
+                                        </apply>
+                                    </apply>
+                                </apply>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <minus/>
+                            <cn cellml:units="dimensionless">1</cn>
+                            <apply>
+                                <exp/>
+                                <apply>
+                                    <divide/>
+                                    <apply>
+                                        <times/>
+                                        <ci>z_Cl</ci>
+                                        <ci>F</ci>
+                                        <ci>v_ms</ci>
+                                    </apply>
+                                    <apply>
+                                        <times/>
+                                        <ci>R</ci>
+                                        <ci>T</ci>
+                                    </apply>
+                                </apply>
+                            </apply>
+                        </apply>
+                    </apply>
+                    <ci>A_Apical</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>I_D_P_Cl</ci>
+                <apply>
+                    <times/>
+                    <ci>J_D_P_Cl</ci>
+                    <ci>F</ci>
+                </apply>
+            </apply>
+        </math>
+    </component>
+</model>

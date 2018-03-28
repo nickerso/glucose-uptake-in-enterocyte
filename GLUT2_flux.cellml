@@ -1,0 +1,139 @@
+<?xml version='1.0'?>
+<!--Original Paper: Lowe, A. G., & Walmsley, A. R. (1986). The kinetics of glucose transport in human red blood cells. Biochimica et Biophysica Acta (BBA)-Biomembranes, 857(2), 146-154.
+Link in Exposure: -->
+<model name="GLUT2_flux" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <component name="GLUT2">
+        <variable initial_value="1" name="K_12" public_interface="out" units="per_M_per_second"/>
+        <variable initial_value="12.6" name="K_21" public_interface="out" units="per_second"/>
+        <variable initial_value="2000" name="K_23" public_interface="out" units="per_second"/>
+        <variable initial_value="90" name="K_32" public_interface="out" units="per_second"/>
+        <variable initial_value="12.6" name="K_34" public_interface="out" units="per_second"/>
+        <variable initial_value="1" name="K_43" public_interface="out" units="per_M_per_second"/>
+        <variable initial_value="0.726" name="K_41" public_interface="out" units="per_second"/>
+        <variable initial_value="12.1" name="K_14" public_interface="out" units="per_second"/>
+        <variable name="glucose_i" public_interface="in" units="M"/>
+        <variable name="glucose_s" public_interface="in" units="M"/>
+        <variable name="K_S" public_interface="out" units="M"/>
+        <variable name="J_GLUT" public_interface="out" units="umol_per_s"/>
+        <variable name="C_tot" public_interface="out" units="mole"/>
+        <variable initial_value="8e7" name="n_GLUT" public_interface="out" units="dimensionless"/>
+        <variable name="D" public_interface="out" units="per_second"/>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <ci>C_tot</ci>
+                <apply>
+                    <divide/>
+                    <ci>n_GLUT</ci>
+                    <cn cellml:units="per_mole" type="e-notation">6.022<sep/>23</cn>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>K_S</ci>
+                <apply>
+                    <divide/>
+                    <ci>K_21</ci>
+                    <ci>K_12</ci>
+                </apply>
+            </apply>
+            <!-- 1e6 is for unit consistency in order to change mole to Micormole-->
+            <apply>
+                <eq/>
+                <ci>J_GLUT</ci>
+                <apply>
+                    <times/>
+                    <apply>
+                        <divide/>
+                        <apply>
+                            <times/>
+                            <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
+                            <ci>C_tot</ci>
+                        </apply>
+                        <ci>D</ci>
+                    </apply>
+                    <apply>
+                        <minus/>
+                        <apply>
+                            <divide/>
+                            <apply>
+                                <times/>
+                                <ci>K_23</ci>
+                                <ci>K_41</ci>
+                                <ci>glucose_i</ci>
+                            </apply>
+                            <ci>K_S</ci>
+                        </apply>
+                        <apply>
+                            <divide/>
+                            <apply>
+                                <times/>
+                                <ci>K_32</ci>
+                                <ci>K_14</ci>
+                                <ci>glucose_s</ci>
+                            </apply>
+                            <ci>K_S</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>D</ci>
+                <apply>
+                    <plus/>
+                    <apply>
+                        <times/>
+                        <apply>
+                            <plus/>
+                            <cn cellml:units="dimensionless">1</cn>
+                            <apply>
+                                <divide/>
+                                <ci>glucose_i</ci>
+                                <ci>K_S</ci>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <plus/>
+                            <apply>
+                                <divide/>
+                                <apply>
+                                    <times/>
+                                    <ci>K_32</ci>
+                                    <ci>glucose_s</ci>
+                                </apply>
+                                <ci>K_S</ci>
+                            </apply>
+                            <ci>K_41</ci>
+                        </apply>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <apply>
+                            <plus/>
+                            <cn cellml:units="dimensionless">1</cn>
+                            <apply>
+                                <divide/>
+                                <ci>glucose_s</ci>
+                                <ci>K_S</ci>
+                            </apply>
+                        </apply>
+                        <apply>
+                            <plus/>
+                            <apply>
+                                <divide/>
+                                <apply>
+                                    <times/>
+                                    <ci>K_23</ci>
+                                    <ci>glucose_i</ci>
+                                </apply>
+                                <ci>K_S</ci>
+                            </apply>
+                            <ci>K_14</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+        </math>
+    </component>
+</model>
