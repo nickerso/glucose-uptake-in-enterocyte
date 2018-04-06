@@ -34,8 +34,8 @@
     <import xlink:href="Apical_Concentration.cellml">
         <component component_ref="Apical_concentrations" name="Apical_concentrations"/>
     </import>
-    <import xlink:href="Rate_Constants.cellml">
-        <component component_ref="rate_constants" name="rate_constants"/>
+    <import xlink:href="SGLT1_Rate_Constants.cellml">
+        <component component_ref="SGLT1_rate_constants" name="SGLT1_rate_constants"/>
     </import>
     <import xlink:href="SGLT1_flux.cellml">
         <component component_ref="SGLT1" name="SGLT1"/>
@@ -99,7 +99,7 @@
         <component_ref component="Enterocyte">
             <component_ref component="parameters"/>
             <component_ref component="Apical_concentrations"/>
-            <component_ref component="rate_constants"/>
+            <component_ref component="SGLT1_rate_constants"/>
             <component_ref component="SGLT1"/>
             <component_ref component="Apical_voltage"/>
             <component_ref component="Cell_concentration"/>
@@ -151,7 +151,7 @@
         <map_variables variable_1="pH_Ext" variable_2="pH_Ext"/>
     </connection>
     <connection>
-        <map_components component_1="rate_constants" component_2="SGLT1"/>
+        <map_components component_1="SGLT1_rate_constants" component_2="SGLT1"/>
         <map_variables variable_1="ks_12" variable_2="ks_12"/>
         <map_variables variable_1="k_12" variable_2="k_12"/>
         <map_variables variable_1="k_21" variable_2="k_21"/>
@@ -187,17 +187,17 @@
         <map_variables variable_1="I_Na_SGLT" variable_2="I_Na_SGLT"/>
     </connection>
     <connection>
-        <map_components component_1="rate_constants" component_2="Apical_concentrations"/>
+        <map_components component_1="SGLT1_rate_constants" component_2="Apical_concentrations"/>
         <map_variables variable_1="q_Na_m" variable_2="q_Na_m"/>
         <map_variables variable_1="q_glucose_m" variable_2="q_glucose_m"/>
     </connection>
     <connection>
-        <map_components component_1="rate_constants" component_2="Cell_concentration"/>
+        <map_components component_1="SGLT1_rate_constants" component_2="Cell_concentration"/>
         <map_variables variable_1="q_Na_i" variable_2="q_Na_i"/>
         <map_variables variable_1="q_glucose_i" variable_2="q_glucose_i"/>
     </connection>
     <connection>
-        <map_components component_1="rate_constants" component_2="parameters"/>
+        <map_components component_1="SGLT1_rate_constants" component_2="parameters"/>
         <map_variables variable_1="k0_12" variable_2="k0_12"/>
         <map_variables variable_1="k0_21" variable_2="k0_21"/>
         <map_variables variable_1="k0_32" variable_2="k0_32"/>
