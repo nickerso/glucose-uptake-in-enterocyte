@@ -121,16 +121,16 @@
     </group>
     <component name="Enterocyte">
         <variable name="v_mc" private_interface="in" public_interface="out" units="volt"/>
-        <variable name="glucose_i" private_interface="in" public_interface="out" units="M"/>
-        <variable name="glucose_s" private_interface="in" public_interface="out" units="M"/>
+        <variable name="q_glucose_i" private_interface="in" public_interface="out" units="M"/>
+        <variable name="q_glucose_s" private_interface="in" public_interface="out" units="M"/>
         <variable name="time" private_interface="out" public_interface="in" units="second"/>
-        <variable name="Na_i" private_interface="in" public_interface="out" units="M"/>
-        <variable name="Cl_i" private_interface="in" public_interface="out" units="M"/>
-        <variable name="K_i" private_interface="in" public_interface="out" units="M"/>
+        <variable name="q_Na_i" private_interface="in" public_interface="out" units="M"/>
+        <variable name="q_Cl_i" private_interface="in" public_interface="out" units="M"/>
+        <variable name="q_K_i" private_interface="in" public_interface="out" units="M"/>
         <variable name="v_sc" private_interface="in" public_interface="out" units="volt"/>
         <variable name="v_ms" private_interface="in" public_interface="out" units="volt"/>
-        <variable name="H_int" private_interface="in" public_interface="out" units="M"/>
-        <variable name="HCO3_i" private_interface="in" public_interface="out" units="M"/>
+        <variable name="q_H_int" private_interface="in" public_interface="out" units="M"/>
+        <variable name="q_HCO3_i" private_interface="in" public_interface="out" units="M"/>
         <variable name="pH_int" private_interface="in" public_interface="out" units="per_second"/>
         <variable name="pH_Ext" private_interface="in" public_interface="out" units="per_second"/>
     </component>
@@ -140,13 +140,13 @@
     </connection>
     <connection>
         <map_components component_1="Cell_concentration" component_2="Enterocyte"/>
-        <map_variables variable_1="glucose_i" variable_2="glucose_i"/>
-        <map_variables variable_1="Na_i" variable_2="Na_i"/>
-        <map_variables variable_1="Cl_i" variable_2="Cl_i"/>
-        <map_variables variable_1="K_i" variable_2="K_i"/>
+        <map_variables variable_1="q_glucose_i" variable_2="q_glucose_i"/>
+        <map_variables variable_1="q_Na_i" variable_2="q_Na_i"/>
+        <map_variables variable_1="q_Cl_i" variable_2="q_Cl_i"/>
+        <map_variables variable_1="q_K_i" variable_2="q_K_i"/>
         <map_variables variable_1="time" variable_2="time"/>
-        <map_variables variable_1="HCO3_i" variable_2="HCO3_i"/>
-        <map_variables variable_1="H_int" variable_2="H_int"/>
+        <map_variables variable_1="q_HCO3_i" variable_2="q_HCO3_i"/>
+        <map_variables variable_1="q_H_int" variable_2="q_H_int"/>
         <map_variables variable_1="pH_int" variable_2="pH_int"/>
         <map_variables variable_1="pH_Ext" variable_2="pH_Ext"/>
     </connection>
@@ -169,8 +169,8 @@
     </connection>
     <connection>
         <map_components component_1="SGLT1" component_2="Apical_concentrations"/>
-        <map_variables variable_1="Na_m" variable_2="Na_m"/>
-        <map_variables variable_1="glucose_m" variable_2="glucose_m"/>
+        <map_variables variable_1="q_Na_m" variable_2="q_Na_m"/>
+        <map_variables variable_1="q_glucose_m" variable_2="q_glucose_m"/>
     </connection>
     <connection>
         <map_components component_1="SGLT1" component_2="Cell_concentration"/>
@@ -188,13 +188,13 @@
     </connection>
     <connection>
         <map_components component_1="rate_constants" component_2="Apical_concentrations"/>
-        <map_variables variable_1="Na_m" variable_2="Na_m"/>
-        <map_variables variable_1="glucose_m" variable_2="glucose_m"/>
+        <map_variables variable_1="q_Na_m" variable_2="q_Na_m"/>
+        <map_variables variable_1="q_glucose_m" variable_2="q_glucose_m"/>
     </connection>
     <connection>
         <map_components component_1="rate_constants" component_2="Cell_concentration"/>
-        <map_variables variable_1="Na_i" variable_2="Na_i"/>
-        <map_variables variable_1="glucose_i" variable_2="glucose_i"/>
+        <map_variables variable_1="q_Na_i" variable_2="q_Na_i"/>
+        <map_variables variable_1="q_glucose_i" variable_2="q_glucose_i"/>
     </connection>
     <connection>
         <map_components component_1="rate_constants" component_2="parameters"/>
@@ -230,27 +230,27 @@
     </connection>
     <connection>
         <map_components component_1="parameters" component_2="Cell_concentration"/>
-        <map_variables variable_1="v_cell" variable_2="v_cell"/>
+        <map_variables variable_1="V_cell" variable_2="V_cell"/>
         <map_variables variable_1="A_Apical" variable_2="A_Apical"/>
     </connection>
     <!--    def map between GLUT2 and parameters for
-        vars v_cell and v_cell;
+        vars V_cell and V_cell;
     enddef;-->
     <connection>
         <map_components component_1="GLUT2" component_2="Cell_concentration"/>
-        <map_variables variable_1="glucose_i" variable_2="glucose_i"/>
+        <map_variables variable_1="q_glucose_i" variable_2="q_glucose_i"/>
         <map_variables variable_1="J_GLUT" variable_2="J_GLUT"/>
     </connection>
     <!--    def map between A_GLUT2 and parameters for
-        vars v_cell and v_cell;
+        vars V_cell and V_cell;
     enddef;-->
     <connection>
         <map_components component_1="Apical_concentrations" component_2="A_GLUT2"/>
-        <map_variables variable_1="glucose_m" variable_2="glucose_m"/>
+        <map_variables variable_1="q_glucose_m" variable_2="q_glucose_m"/>
     </connection>
     <connection>
         <map_components component_1="A_GLUT2" component_2="Cell_concentration"/>
-        <map_variables variable_1="glucose_i" variable_2="glucose_i"/>
+        <map_variables variable_1="q_glucose_i" variable_2="q_glucose_i"/>
         <map_variables variable_1="J_A_GLUT" variable_2="J_A_GLUT"/>
     </connection>
     <connection>
@@ -259,11 +259,11 @@
     </connection>
     <connection>
         <map_components component_1="NaK_channel" component_2="Basolateral_concentrations"/>
-        <map_variables variable_1="K_s" variable_2="K_s"/>
+        <map_variables variable_1="q_K_s" variable_2="q_K_s"/>
     </connection>
     <connection>
         <map_components component_1="NaK_channel" component_2="Cell_concentration"/>
-        <map_variables variable_1="Na_i" variable_2="Na_i"/>
+        <map_variables variable_1="q_Na_i" variable_2="q_Na_i"/>
         <map_variables variable_1="J_K_NaK" variable_2="J_K_NaK"/>
         <map_variables variable_1="J_Na_NaK" variable_2="J_Na_NaK"/>
     </connection>
@@ -288,9 +288,9 @@
     </connection>
     <connection>
         <map_components component_1="Apical_concentrations" component_2="Paracellular_Diffusion"/>
-        <map_variables variable_1="Na_m" variable_2="Na_m"/>
-        <map_variables variable_1="K_m" variable_2="K_m"/>
-        <map_variables variable_1="Cl_m" variable_2="Cl_m"/>
+        <map_variables variable_1="q_Na_m" variable_2="q_Na_m"/>
+        <map_variables variable_1="q_K_m" variable_2="q_K_m"/>
+        <map_variables variable_1="q_Cl_m" variable_2="q_Cl_m"/>
     </connection>
     <connection>
         <map_components component_1="parameters" component_2="Paracellular_Diffusion"/>
@@ -331,9 +331,9 @@
     </connection>
     <connection>
         <map_components component_1="Basolateral_concentrations" component_2="Paracellular_Diffusion"/>
-        <map_variables variable_1="Na_s" variable_2="Na_s"/>
-        <map_variables variable_1="K_s" variable_2="K_s"/>
-        <map_variables variable_1="Cl_s" variable_2="Cl_s"/>
+        <map_variables variable_1="q_Na_s" variable_2="q_Na_s"/>
+        <map_variables variable_1="q_K_s" variable_2="q_K_s"/>
+        <map_variables variable_1="q_Cl_s" variable_2="q_Cl_s"/>
     </connection>
     <connection>
         <map_components component_1="BK" component_2="parameters"/>
@@ -345,13 +345,13 @@
     </connection>
     <connection>
         <map_components component_1="BK" component_2="Cell_concentration"/>
-        <map_variables variable_1="K_i" variable_2="K_i"/>
-        <map_variables variable_1="Ca_i" variable_2="Ca_i"/>
+        <map_variables variable_1="q_K_i" variable_2="q_K_i"/>
+        <map_variables variable_1="q_Ca_i" variable_2="q_Ca_i"/>
         <map_variables variable_1="J_BK" variable_2="J_BK"/>
     </connection>
     <connection>
         <map_components component_1="BK" component_2="Apical_concentrations"/>
-        <map_variables variable_1="K_m" variable_2="K_m"/>
+        <map_variables variable_1="q_K_m" variable_2="q_K_m"/>
     </connection>
     <connection>
         <map_components component_1="BK" component_2="Apical_voltage"/>
@@ -368,13 +368,13 @@
     </connection>
     <connection>
         <map_components component_1="IK" component_2="Cell_concentration"/>
-        <map_variables variable_1="K_i" variable_2="K_i"/>
-        <map_variables variable_1="Ca_i" variable_2="Ca_i"/>
+        <map_variables variable_1="q_K_i" variable_2="q_K_i"/>
+        <map_variables variable_1="q_Ca_i" variable_2="q_Ca_i"/>
         <map_variables variable_1="J_IK" variable_2="J_IK"/>
     </connection>
     <connection>
         <map_components component_1="IK" component_2="Basolateral_concentrations"/>
-        <map_variables variable_1="K_s" variable_2="K_s"/>
+        <map_variables variable_1="q_K_s" variable_2="q_K_s"/>
     </connection>
     <connection>
         <map_components component_1="IK" component_2="Basol_voltage"/>
@@ -385,26 +385,26 @@
         <map_components component_1="parameters" component_2="AE1"/>
         <map_variables variable_1="F" variable_2="F"/>
         <map_variables variable_1="A_Apical" variable_2="A_Apical"/>
-        <map_variables variable_1="v_cell" variable_2="v_cell"/>
+        <map_variables variable_1="V_cell" variable_2="V_cell"/>
     </connection>
     <connection>
         <map_components component_1="Cell_concentration" component_2="AE1"/>
-        <map_variables variable_1="Cl_i" variable_2="Cl_i"/>
-        <map_variables variable_1="HCO3_i" variable_2="HCO3_i"/>
+        <map_variables variable_1="q_Cl_i" variable_2="q_Cl_i"/>
+        <map_variables variable_1="q_HCO3_i" variable_2="q_HCO3_i"/>
         <!--        vars HCO3_m and HCO3_m;-->
         <map_variables variable_1="J_AE1_Cl" variable_2="J_AE1_Cl"/>
         <map_variables variable_1="J_AE1_HCO3" variable_2="J_AE1_HCO3"/>
     </connection>
     <connection>
         <map_components component_1="Apical_concentrations" component_2="AE1"/>
-        <map_variables variable_1="Cl_m" variable_2="Cl_m"/>
-        <map_variables variable_1="HCO3_m" variable_2="HCO3_m"/>
+        <map_variables variable_1="q_Cl_m" variable_2="q_Cl_m"/>
+        <map_variables variable_1="q_HCO3_m" variable_2="q_HCO3_m"/>
     </connection>
     <connection>
         <map_components component_1="Cell_concentration" component_2="NHE3"/>
-        <map_variables variable_1="Na_i" variable_2="Na_i"/>
-        <map_variables variable_1="H_int" variable_2="H_int"/>
-        <map_variables variable_1="H_Ext" variable_2="H_Ext"/>
+        <map_variables variable_1="q_Na_i" variable_2="q_Na_i"/>
+        <map_variables variable_1="q_H_int" variable_2="q_H_int"/>
+        <map_variables variable_1="q_H_Ext" variable_2="q_H_Ext"/>
         <map_variables variable_1="J_NHE3_Na" variable_2="J_NHE3_Na"/>
         <map_variables variable_1="J_NHE3_H" variable_2="J_NHE3_H"/>
     </connection>
@@ -412,7 +412,7 @@
         <map_components component_1="parameters" component_2="NHE3"/>
         <map_variables variable_1="F" variable_2="F"/>
         <map_variables variable_1="A_Apical" variable_2="A_Apical"/>
-        <map_variables variable_1="v_cell" variable_2="v_cell"/>
+        <map_variables variable_1="V_cell" variable_2="V_cell"/>
     </connection>
     <connection>
         <map_components component_1="Apical_voltage" component_2="NHE3"/>
@@ -421,14 +421,14 @@
     </connection>
     <connection>
         <map_components component_1="Apical_concentrations" component_2="NHE3"/>
-        <map_variables variable_1="Na_m" variable_2="Na_m"/>
+        <map_variables variable_1="q_Na_m" variable_2="q_Na_m"/>
     </connection>
     <connection>
         <map_components component_1="Cell_concentration" component_2="NBC"/>
-        <map_variables variable_1="Na_i" variable_2="Na_i"/>
+        <map_variables variable_1="q_Na_i" variable_2="q_Na_i"/>
         <map_variables variable_1="J_NBC_Na" variable_2="J_NBC_Na"/>
         <map_variables variable_1="J_NBC_HCO3" variable_2="J_NBC_HCO3"/>
-        <map_variables variable_1="HCO3_i" variable_2="HCO3_i"/>
+        <map_variables variable_1="q_HCO3_i" variable_2="q_HCO3_i"/>
     </connection>
     <connection>
         <map_components component_1="parameters" component_2="NBC"/>
@@ -436,7 +436,6 @@
         <map_variables variable_1="R" variable_2="R"/>
         <map_variables variable_1="T" variable_2="T"/>
         <map_variables variable_1="A_Apical" variable_2="A_Apical"/>
-        <map_variables variable_1="v_cell" variable_2="v_cell"/>
     </connection>
     <connection>
         <map_components component_1="Basol_voltage" component_2="NBC"/>
@@ -446,14 +445,14 @@
     </connection>
     <connection>
         <map_components component_1="Basolateral_concentrations" component_2="NBC"/>
-        <map_variables variable_1="Na_s" variable_2="Na_s"/>
-        <map_variables variable_1="HCO3_s" variable_2="HCO3_s"/>
+        <map_variables variable_1="q_Na_s" variable_2="q_Na_s"/>
+        <map_variables variable_1="q_HCO3_s" variable_2="q_HCO3_s"/>
     </connection>
     <connection>
         <map_components component_1="NaKCC" component_2="Cell_concentration"/>
-        <map_variables variable_1="Na_i" variable_2="Na_i"/>
-        <map_variables variable_1="Cl_i" variable_2="Cl_i"/>
-        <map_variables variable_1="K_i" variable_2="K_i"/>
+        <map_variables variable_1="q_Na_i" variable_2="q_Na_i"/>
+        <map_variables variable_1="q_Cl_i" variable_2="q_Cl_i"/>
+        <map_variables variable_1="q_K_i" variable_2="q_K_i"/>
         <map_variables variable_1="J_NaKCC" variable_2="J_NaKCC"/>
     </connection>
     <connection>
@@ -471,12 +470,12 @@
     </connection>
     <connection>
         <map_components component_1="ENaC" component_2="Cell_concentration"/>
-        <map_variables variable_1="Na_i" variable_2="Na_i"/>
+        <map_variables variable_1="q_Na_i" variable_2="q_Na_i"/>
         <map_variables variable_1="J_ENaC" variable_2="J_ENaC"/>
     </connection>
     <connection>
         <map_components component_1="ENaC" component_2="Apical_concentrations"/>
-        <map_variables variable_1="Na_m" variable_2="Na_m"/>
+        <map_variables variable_1="q_Na_m" variable_2="q_Na_m"/>
     </connection>
     <connection>
         <map_components component_1="ENaC" component_2="Apical_voltage"/>
@@ -493,15 +492,12 @@
     </connection>
     <connection>
         <map_components component_1="CFTR" component_2="Cell_concentration"/>
-        <map_variables variable_1="Cl_i" variable_2="Cl_i"/>
-        <map_variables variable_1="HCO3_i" variable_2="HCO3_i"/>
+        <map_variables variable_1="q_Cl_i" variable_2="q_Cl_i"/>
         <map_variables variable_1="J_CFTR" variable_2="J_CFTR"/>
-        <map_variables variable_1="J_CFTR_HCO3" variable_2="J_CFTR_HCO3"/>
     </connection>
     <connection>
         <map_components component_1="CFTR" component_2="Apical_concentrations"/>
-        <map_variables variable_1="Cl_m" variable_2="Cl_m"/>
-        <map_variables variable_1="HCO3_m" variable_2="HCO3_m"/>
+        <map_variables variable_1="q_Cl_m" variable_2="q_Cl_m"/>
     </connection>
     <connection>
         <map_components component_1="CFTR" component_2="Apical_voltage"/>
@@ -510,10 +506,10 @@
     </connection>
     <connection>
         <map_components component_1="Basolateral_concentrations" component_2="GLUT2"/>
-        <map_variables variable_1="glucose_s" variable_2="glucose_s"/>
+        <map_variables variable_1="q_glucose_s" variable_2="q_glucose_s"/>
     </connection>
     <connection>
         <map_components component_1="Basolateral_concentrations" component_2="Enterocyte"/>
-        <map_variables variable_1="glucose_s" variable_2="glucose_s"/>
+        <map_variables variable_1="q_glucose_s" variable_2="q_glucose_s"/>
     </connection>
 </model>

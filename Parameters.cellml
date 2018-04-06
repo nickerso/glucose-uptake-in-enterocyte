@@ -11,7 +11,7 @@
         <variable initial_value="1e-5" name="capacitance" public_interface="out" units="uF"/>
         <variable initial_value="8.4e-10" name="A_Apical" public_interface="out" units="m2"/>
         <variable initial_value="5e-10" name="A_Basol" public_interface="out" units="m2"/>
-        <variable initial_value="5e-16" name="v_cell" public_interface="out" units="m3"/>
+        <variable initial_value="5e-16" name="V_cell" public_interface="out" units="m3"/>
         <variable initial_value="4.5e-8" name="P_P_Na" public_interface="out" units="m_per_s"/>
         <variable initial_value="1e-6" name="P_P_k" public_interface="out" units="m_per_s"/>
         <variable initial_value="3e-8" name="P_P_Cl" public_interface="out" units="m_per_s"/>

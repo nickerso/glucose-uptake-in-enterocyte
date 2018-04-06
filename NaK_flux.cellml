@@ -6,8 +6,8 @@ Original Paper: Thorsen, K., Drengstig, T., & Ruoff, P. (2014). Transepithelial 
         <!--var time: second {pub: in};-->
         <variable name="v_sc" public_interface="in" units="volt"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
-        <variable name="K_s" public_interface="in" units="M"/>
-        <variable name="Na_i" public_interface="in" units="M"/>
+        <variable name="q_K_s" public_interface="in" units="M"/>
+        <variable name="q_Na_i" public_interface="in" units="M"/>
         <variable name="TO_NaK" public_interface="out" units="per_second"/>
         <variable initial_value="5e6" name="n_NaK" public_interface="out" units="dimensionless"/>
         <variable initial_value="10e-3" name="K_Na_i_half" public_interface="out" units="M"/>
@@ -58,7 +58,7 @@ Original Paper: Thorsen, K., Drengstig, T., & Ruoff, P. (2014). Transepithelial 
                                 </apply>
                                 <apply>
                                     <power/>
-                                    <ci>Na_i</ci>
+                                    <ci>q_Na_i</ci>
                                     <cn cellml:units="dimensionless">1.36</cn>
                                 </apply>
                                 <cn cellml:units="dimensionless">1.13</cn>
@@ -72,18 +72,18 @@ Original Paper: Thorsen, K., Drengstig, T., & Ruoff, P. (2014). Transepithelial 
                                 </apply>
                                 <apply>
                                     <power/>
-                                    <ci>Na_i</ci>
+                                    <ci>q_Na_i</ci>
                                     <cn cellml:units="dimensionless">1.36</cn>
                                 </apply>
                             </apply>
                         </apply>
                         <cn cellml:units="dimensionless">1.3</cn>
-                        <ci>K_s</ci>
+                        <ci>q_K_s</ci>
                     </apply>
                     <apply>
                         <plus/>
                         <ci>K_K_s_half</ci>
-                        <ci>K_s</ci>
+                        <ci>q_K_s</ci>
                     </apply>
                 </apply>
             </apply>

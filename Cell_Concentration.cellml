@@ -4,16 +4,16 @@
         <variable name="time" public_interface="out" units="second"/>
     </component>
     <component name="Cell_concentration">
-        <variable initial_value="47e-3" name="Na_i" public_interface="out" units="M"/>
-        <variable initial_value="11e-3" name="glucose_i" public_interface="out" units="M"/>
-        <variable initial_value="129e-3" name="K_i" public_interface="out" units="M"/>
-        <variable initial_value="60e-6" name="Ca_i" public_interface="out" units="M"/>
-        <variable initial_value="57e-3" name="Cl_i" public_interface="out" units="M"/>
-        <variable name="HCO3_i" public_interface="out" units="M"/>
-        <variable name="H_int" public_interface="out" units="M"/>
-        <variable name="H_Ext" public_interface="out" units="M"/>
-        <variable name="H_s" public_interface="out" units="M"/>
-        <variable name="v_cell" public_interface="in" units="m3"/>
+        <variable initial_value="47e-3" name="q_Na_i" public_interface="out" units="M"/>
+        <variable initial_value="11e-3" name="q_glucose_i" public_interface="out" units="M"/>
+        <variable initial_value="129e-3" name="q_K_i" public_interface="out" units="M"/>
+        <variable initial_value="60e-6" name="q_Ca_i" public_interface="out" units="M"/>
+        <variable initial_value="57e-3" name="q_Cl_i" public_interface="out" units="M"/>
+        <variable name="q_HCO3_i" public_interface="out" units="M"/>
+        <variable name="q_H_int" public_interface="out" units="M"/>
+        <variable name="q_H_Ext" public_interface="out" units="M"/>
+        <variable name="q_H_s" public_interface="out" units="M"/>
+        <variable name="V_cell" public_interface="in" units="m3"/>
         <variable name="A_Apical" public_interface="in" units="m2"/>
         <variable name="J_Na_SGLT" public_interface="in" units="umol_per_s"/>
         <variable name="J_Gl_SGLT" public_interface="in" units="umol_per_s"/>
@@ -28,7 +28,6 @@
         <variable name="J_AE1_Cl" public_interface="in" units="umol_per_s"/>
         <variable name="J_AE1_HCO3" public_interface="in" units="umol_per_s"/>
         <variable name="J_CFTR" public_interface="in" units="umol_per_s"/>
-        <variable name="J_CFTR_HCO3" public_interface="in" units="umol_per_s"/>
         <variable name="J_ENaC" public_interface="in" units="umol_per_s"/>
         <variable name="J_NaKCC" public_interface="in" units="umol_per_s"/>
         <variable name="J_IK" public_interface="in" units="umol_per_s"/>
@@ -76,7 +75,7 @@
                 <apply>
                     <times/>
                     <cn cellml:units="dimensionless">2.3</cn>
-                    <ci>HCO3_i</ci>
+                    <ci>q_HCO3_i</ci>
                 </apply>
             </apply>
             <apply>
@@ -86,14 +85,14 @@
                     <bvar>
                         <ci>time</ci>
                     </bvar>
-                    <ci>Na_i</ci>
+                    <ci>q_Na_i</ci>
                 </apply>
                 <apply>
                     <times/>
                     <apply>
                         <divide/>
                         <cn cellml:units="m3_mole_per_litre_per_umol" type="e-notation">1<sep/>-9</cn>
-                        <ci>v_cell</ci>
+                        <ci>V_cell</ci>
                     </apply>
                     <apply>
                         <plus/>
@@ -140,14 +139,14 @@
                     <bvar>
                         <ci>time</ci>
                     </bvar>
-                    <ci>glucose_i</ci>
+                    <ci>q_glucose_i</ci>
                 </apply>
                 <apply>
                     <times/>
                     <apply>
                         <divide/>
                         <cn cellml:units="m3_mole_per_litre_per_umol" type="e-notation">1<sep/>-9</cn>
-                        <ci>v_cell</ci>
+                        <ci>V_cell</ci>
                     </apply>
                     <apply>
                         <minus/>
@@ -179,14 +178,14 @@
                     <bvar>
                         <ci>time</ci>
                     </bvar>
-                    <ci>K_i</ci>
+                    <ci>q_K_i</ci>
                 </apply>
                 <apply>
                     <times/>
                     <apply>
                         <divide/>
                         <cn cellml:units="m3_mole_per_litre_per_umol" type="e-notation">1<sep/>-9</cn>
-                        <ci>v_cell</ci>
+                        <ci>V_cell</ci>
                     </apply>
                     <apply>
                         <minus/>
@@ -222,14 +221,14 @@
                     <bvar>
                         <ci>time</ci>
                     </bvar>
-                    <ci>Cl_i</ci>
+                    <ci>q_Cl_i</ci>
                 </apply>
                 <apply>
                     <times/>
                     <apply>
                         <divide/>
                         <cn cellml:units="m3_mole_per_litre_per_umol" type="e-notation">1<sep/>-9</cn>
-                        <ci>v_cell</ci>
+                        <ci>V_cell</ci>
                     </apply>
                     <apply>
                         <plus/>
@@ -304,7 +303,7 @@
             </apply>
             <apply>
                 <eq/>
-                <ci>H_int</ci>
+                <ci>q_H_int</ci>
                 <apply>
                     <power/>
                     <cn cellml:units="dimensionless">10</cn>
@@ -316,7 +315,7 @@
             </apply>
             <apply>
                 <eq/>
-                <ci>HCO3_i</ci>
+                <ci>q_HCO3_i</ci>
                 <apply>
                     <times/>
                     <ci>s</ci>
@@ -334,7 +333,7 @@
             </apply>
             <apply>
                 <eq/>
-                <ci>H_Ext</ci>
+                <ci>q_H_Ext</ci>
                 <apply>
                     <power/>
                     <cn cellml:units="dimensionless">10</cn>
@@ -346,7 +345,7 @@
             </apply>
             <apply>
                 <eq/>
-                <ci>H_s</ci>
+                <ci>q_H_s</ci>
                 <apply>
                     <power/>
                     <cn cellml:units="dimensionless">10</cn>

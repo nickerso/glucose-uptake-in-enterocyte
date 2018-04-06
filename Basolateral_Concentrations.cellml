@@ -1,10 +1,10 @@
 <?xml version='1.0'?>
 <model name="Basolateral_Concentrations" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <component name="Basolateral_concentrations">
-        <variable initial_value="155e-3" name="Na_s" public_interface="out" units="M"/>
-        <variable initial_value="119e-3" name="Cl_s" public_interface="out" units="M"/>
-        <variable initial_value="5.4e-3" name="K_s" public_interface="out" units="M"/>
-        <variable initial_value="25e-3" name="glucose_s" public_interface="out" units="M"/>
-        <variable initial_value="10e-3" name="HCO3_s" public_interface="out" units="M"/>
+        <variable initial_value="155e-3" name="q_Na_s" public_interface="out" units="M"/>
+        <variable initial_value="119e-3" name="q_Cl_s" public_interface="out" units="M"/>
+        <variable initial_value="5.4e-3" name="q_K_s" public_interface="out" units="M"/>
+        <variable initial_value="25e-3" name="q_glucose_s" public_interface="out" units="M"/>
+        <variable initial_value="10e-3" name="q_HCO3_s" public_interface="out" units="M"/>
     </component>
 </model>

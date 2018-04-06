@@ -3,10 +3,10 @@
  Original Paper: Xing-Zhen Chen, Michael J Coady, Francis Jackson, Alfred Berteloot, and Jean-Yves Lapointe. Thermodynamic determination of the Na+: glucose coupling ratio for the human sglt1 cotransporter.        -->
 <model name="Rate_Constants" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <component name="rate_constants">
-        <variable name="Na_i" public_interface="in" units="M"/>
-        <variable name="Na_m" public_interface="in" units="M"/>
-        <variable name="glucose_i" public_interface="in" units="M"/>
-        <variable name="glucose_m" public_interface="in" units="M"/>
+        <variable name="q_Na_i" public_interface="in" units="M"/>
+        <variable name="q_Na_m" public_interface="in" units="M"/>
+        <variable name="q_glucose_i" public_interface="in" units="M"/>
+        <variable name="q_glucose_m" public_interface="in" units="M"/>
         <variable name="k_12" public_interface="out" units="per_second"/>
         <variable name="ks_12" public_interface="out" units="per_M2_per_second"/>
         <variable name="k_21" public_interface="out" units="per_second"/>
@@ -84,7 +84,7 @@
                     </apply>
                     <apply>
                         <power/>
-                        <ci>Na_m</ci>
+                        <ci>q_Na_m</ci>
                         <cn cellml:units="dimensionless">2</cn>
                     </apply>
                 </apply>
@@ -137,7 +137,7 @@
                 <apply>
                     <times/>
                     <ci>k0_54</ci>
-                    <ci>glucose_i</ci>
+                    <ci>q_glucose_i</ci>
                 </apply>
             </apply>
             <apply>
@@ -158,7 +158,7 @@
                     <ci>k0_65</ci>
                     <apply>
                         <power/>
-                        <ci>Na_i</ci>
+                        <ci>q_Na_i</ci>
                         <cn cellml:units="dimensionless">2</cn>
                     </apply>
                 </apply>

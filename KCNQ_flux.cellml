@@ -6,10 +6,10 @@
         <variable name="z_k" public_interface="in" units="dimensionless"/>
         <variable name="R" public_interface="in" units="J_per_K_per_mol"/>
         <variable name="T" public_interface="in" units="kelvin"/>
-        <variable name="K_i" public_interface="in" units="M"/>
-        <variable name="K_s" public_interface="in" units="M"/>
-        <variable name="Ca_i" public_interface="in" units="M"/>
-        <variable name="V_A_IK" public_interface="out" units="volt"/>
+        <variable name="q_K_i" public_interface="in" units="M"/>
+        <variable name="q_K_s" public_interface="in" units="M"/>
+        <variable name="q_Ca_i" public_interface="in" units="M"/>
+        <variable name="v_A_K" public_interface="out" units="volt"/>
         <variable name="v_sc" public_interface="in" units="volt"/>
         <variable name="J_IK" public_interface="out" units="umol_per_s"/>
         <variable name="I_IK" public_interface="out" units="uA"/>
@@ -35,7 +35,7 @@
                             <apply>
                                 <divide/>
                                 <ci>K_s_IK</ci>
-                                <ci>Ca_i</ci>
+                                <ci>q_Ca_i</ci>
                             </apply>
                             <ci>eta</ci>
                         </apply>
@@ -44,7 +44,7 @@
             </apply>
             <apply>
                 <eq/>
-                <ci>V_A_IK</ci>
+                <ci>v_A_K</ci>
                 <apply>
                     <times/>
                     <apply>
@@ -64,8 +64,8 @@
                         <ln/>
                         <apply>
                             <divide/>
-                            <ci>K_s</ci>
-                            <ci>K_i</ci>
+                            <ci>q_K_s</ci>
+                            <ci>q_K_i</ci>
                         </apply>
                     </apply>
                 </apply>
@@ -84,7 +84,7 @@
                     <apply>
                         <minus/>
                         <ci>v_sc</ci>
-                        <ci>V_A_IK</ci>
+                        <ci>v_A_K</ci>
                     </apply>
                 </apply>
             </apply>

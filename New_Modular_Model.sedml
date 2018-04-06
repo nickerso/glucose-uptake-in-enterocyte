@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <sedML level="1" version="2" xmlns="http://sed-ml.org/sed-ml/level1/version2" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <listOfSimulations>
-        <uniformTimeCourse id="simulation1" initialTime="0" numberOfPoints="3000" outputEndTime="3000" outputStartTime="0">
+        <uniformTimeCourse id="simulation1" initialTime="0" numberOfPoints="1000" outputEndTime="1000" outputStartTime="0">
             <algorithm kisaoID="KISAO:0000019">
                 <listOfAlgorithmParameters>
                     <algorithmParameter kisaoID="KISAO:0000211" value="1e-7"/>
@@ -78,7 +78,7 @@
         </dataGenerator>
         <dataGenerator id="yDataGenerator2_1">
             <listOfVariables>
-                <variable id="yVariable2_1" target="/cellml:model/cellml:component[@name='Enterocyte']/cellml:variable[@name='glucose_i']" taskReference="repeatedTask"/>
+                <variable id="yVariable2_1" target="/cellml:model/cellml:component[@name='Enterocyte']/cellml:variable[@name='q_glucose_i']" taskReference="repeatedTask"/>
             </listOfVariables>
             <math xmlns="http://www.w3.org/1998/Math/MathML">
                 <ci> yVariable2_1 </ci>
@@ -94,7 +94,7 @@
         </dataGenerator>
         <dataGenerator id="yDataGenerator3_1">
             <listOfVariables>
-                <variable id="yVariable3_1" target="/cellml:model/cellml:component[@name='Enterocyte']/cellml:variable[@name='Na_i']" taskReference="repeatedTask"/>
+                <variable id="yVariable3_1" target="/cellml:model/cellml:component[@name='Enterocyte']/cellml:variable[@name='q_Na_i']" taskReference="repeatedTask"/>
             </listOfVariables>
             <math xmlns="http://www.w3.org/1998/Math/MathML">
                 <ci> yVariable3_1 </ci>
@@ -110,7 +110,7 @@
         </dataGenerator>
         <dataGenerator id="yDataGenerator4_1">
             <listOfVariables>
-                <variable id="yVariable4_1" target="/cellml:model/cellml:component[@name='Enterocyte']/cellml:variable[@name='K_i']" taskReference="repeatedTask"/>
+                <variable id="yVariable4_1" target="/cellml:model/cellml:component[@name='Enterocyte']/cellml:variable[@name='q_K_i']" taskReference="repeatedTask"/>
             </listOfVariables>
             <math xmlns="http://www.w3.org/1998/Math/MathML">
                 <ci> yVariable4_1 </ci>
@@ -126,7 +126,7 @@
         </dataGenerator>
         <dataGenerator id="yDataGenerator5_1">
             <listOfVariables>
-                <variable id="yVariable5_1" target="/cellml:model/cellml:component[@name='Enterocyte']/cellml:variable[@name='Cl_i']" taskReference="repeatedTask"/>
+                <variable id="yVariable5_1" target="/cellml:model/cellml:component[@name='Enterocyte']/cellml:variable[@name='q_Cl_i']" taskReference="repeatedTask"/>
             </listOfVariables>
             <math xmlns="http://www.w3.org/1998/Math/MathML">
                 <ci> yVariable5_1 </ci>

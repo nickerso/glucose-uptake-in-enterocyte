@@ -6,9 +6,9 @@ Link in Exposure:-->
         <variable name="z_Na" public_interface="in" units="dimensionless"/>
         <variable name="R" public_interface="in" units="J_per_K_per_mol"/>
         <variable name="T" public_interface="in" units="kelvin"/>
-        <variable name="Na_i" public_interface="in" units="M"/>
-        <variable name="Na_m" public_interface="in" units="M"/>
-        <variable name="V_A_Na" public_interface="out" units="volt"/>
+        <variable name="q_Na_i" public_interface="in" units="M"/>
+        <variable name="q_Na_m" public_interface="in" units="M"/>
+        <variable name="v_A_Na" public_interface="out" units="volt"/>
         <variable name="v_mc" public_interface="in" units="volt"/>
         <variable name="J_ENaC" public_interface="out" units="umol_per_s"/>
         <variable name="I_ENaC" public_interface="out" units="uA"/>
@@ -28,7 +28,7 @@ Link in Exposure:-->
             </apply>
             <apply>
                 <eq/>
-                <ci>V_A_Na</ci>
+                <ci>v_A_Na</ci>
                 <apply>
                     <times/>
                     <apply>
@@ -48,8 +48,8 @@ Link in Exposure:-->
                         <ln/>
                         <apply>
                             <divide/>
-                            <ci>Na_m</ci>
-                            <ci>Na_i</ci>
+                            <ci>q_Na_m</ci>
+                            <ci>q_Na_i</ci>
                         </apply>
                     </apply>
                 </apply>
@@ -70,7 +70,7 @@ Link in Exposure:-->
                     <apply>
                         <minus/>
                         <ci>v_mc</ci>
-                        <ci>V_A_Na</ci>
+                        <ci>v_A_Na</ci>
                     </apply>
                 </apply>
             </apply>

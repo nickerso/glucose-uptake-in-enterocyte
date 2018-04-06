@@ -7,9 +7,9 @@
         <variable name="S_C" public_interface="out" units="M"/>
         <variable name="J_NaKCC" public_interface="out" units="umol_per_s"/>
         <variable name="I_NaKCC" public_interface="out" units="uA"/>
-        <variable name="Na_i" public_interface="in" units="M"/>
-        <variable name="K_i" public_interface="in" units="M"/>
-        <variable name="Cl_i" public_interface="in" units="M"/>
+        <variable name="q_Na_i" public_interface="in" units="M"/>
+        <variable name="q_K_i" public_interface="in" units="M"/>
+        <variable name="q_Cl_i" public_interface="in" units="M"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
         <variable name="u_NaKCC" public_interface="out" units="per_second"/>
         <variable initial_value="157.55" name="gamma_1" public_interface="out" units="per_second2"/>
@@ -23,10 +23,10 @@
                 <ci>S_C</ci>
                 <apply>
                     <times/>
-                    <ci>Na_i</ci>
-                    <ci>Cl_i</ci>
-                    <ci>Cl_i</ci>
-                    <ci>K_i</ci>
+                    <ci>q_Na_i</ci>
+                    <ci>q_Cl_i</ci>
+                    <ci>q_Cl_i</ci>
+                    <ci>q_K_i</ci>
                 </apply>
             </apply>
             <apply>

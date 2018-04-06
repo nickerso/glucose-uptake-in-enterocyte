@@ -6,20 +6,15 @@ Link in Exposure:-->
         <variable name="z_Cl" public_interface="in" units="dimensionless"/>
         <variable name="R" public_interface="in" units="J_per_K_per_mol"/>
         <variable name="T" public_interface="in" units="kelvin"/>
-        <variable name="Cl_i" public_interface="in" units="M"/>
-        <variable name="Cl_m" public_interface="in" units="M"/>
-        <variable name="V_A_Cl" public_interface="out" units="volt"/>
-        <variable name="V_A_HCO3" public_interface="out" units="volt"/>
+        <variable name="q_Cl_i" public_interface="in" units="M"/>
+        <variable name="q_Cl_m" public_interface="in" units="M"/>
+        <variable name="v_A_Cl" public_interface="out" units="volt"/>
         <variable name="v_mc" public_interface="in" units="volt"/>
         <variable name="J_CFTR" public_interface="out" units="umol_per_s"/>
-        <variable name="J_CFTR_HCO3" public_interface="out" units="umol_per_s"/>
         <variable name="I_CFTR" public_interface="out" units="uA"/>
-        <variable name="I_CFTR_HCO3" public_interface="out" units="uA"/>
         <variable name="A_Apical" public_interface="in" units="m2"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
         <variable initial_value="9" name="G_CFTR" public_interface="out" units="S"/>
-        <variable name="HCO3_i" public_interface="in" units="M"/>
-        <variable name="HCO3_m" public_interface="in" units="M"/>
         <variable initial_value="-1" name="z_HCO3" public_interface="out" units="dimensionless"/>
         <variable initial_value="0.1" name="alpha_CFTR" public_interface="out" units="per_m2"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -34,7 +29,7 @@ Link in Exposure:-->
             </apply>
             <apply>
                 <eq/>
-                <ci>V_A_Cl</ci>
+                <ci>v_A_Cl</ci>
                 <apply>
                     <times/>
                     <apply>
@@ -54,8 +49,8 @@ Link in Exposure:-->
                         <ln/>
                         <apply>
                             <divide/>
-                            <ci>Cl_m</ci>
-                            <ci>Cl_i</ci>
+                            <ci>q_Cl_m</ci>
+                            <ci>q_Cl_i</ci>
                         </apply>
                     </apply>
                 </apply>
@@ -76,61 +71,8 @@ Link in Exposure:-->
                     <apply>
                         <minus/>
                         <ci>v_mc</ci>
-                        <ci>V_A_Cl</ci>
+                        <ci>v_A_Cl</ci>
                     </apply>
-                </apply>
-            </apply>
-            <apply>
-                <eq/>
-                <ci>V_A_HCO3</ci>
-                <apply>
-                    <times/>
-                    <apply>
-                        <divide/>
-                        <apply>
-                            <times/>
-                            <ci>R</ci>
-                            <ci>T</ci>
-                        </apply>
-                        <apply>
-                            <times/>
-                            <ci>z_HCO3</ci>
-                            <ci>F</ci>
-                        </apply>
-                    </apply>
-                    <apply>
-                        <ln/>
-                        <apply>
-                            <divide/>
-                            <ci>HCO3_m</ci>
-                            <ci>HCO3_i</ci>
-                        </apply>
-                    </apply>
-                </apply>
-            </apply>
-            <apply>
-                <eq/>
-                <ci>I_CFTR_HCO3</ci>
-                <apply>
-                    <times/>
-                    <cn cellml:units="dimensionless" type="e-notation">0.25<sep/>6</cn>
-                    <ci>G_CFTR</ci>
-                    <ci>alpha_CFTR</ci>
-                    <ci>A_Apical</ci>
-                    <apply>
-                        <minus/>
-                        <ci>v_mc</ci>
-                        <ci>V_A_HCO3</ci>
-                    </apply>
-                </apply>
-            </apply>
-            <apply>
-                <eq/>
-                <ci>J_CFTR_HCO3</ci>
-                <apply>
-                    <divide/>
-                    <ci>I_CFTR_HCO3</ci>
-                    <ci>F</ci>
                 </apply>
             </apply>
         </math>

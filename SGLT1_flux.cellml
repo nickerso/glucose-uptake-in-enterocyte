@@ -26,8 +26,8 @@
         <variable name="ks_12" public_interface="in" units="per_M2_per_second"/>
         <variable name="k0_23" public_interface="in" units="per_M_per_second"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
-        <variable name="Na_m" public_interface="in" units="M"/>
-        <variable name="glucose_m" public_interface="in" units="M"/>
+        <variable name="q_Na_m" public_interface="in" units="M"/>
+        <variable name="q_glucose_m" public_interface="in" units="M"/>
         <variable initial_value="18e7" name="n_SGLT" public_interface="out" units="dimensionless"/>
         <variable name="J_Na_SGLT" public_interface="out" units="umol_per_s"/>
         <variable name="I_Na_SGLT" public_interface="out" units="uA"/>
@@ -874,17 +874,17 @@
                                 <ci>epsilon</ci>
                                 <apply>
                                     <power/>
-                                    <ci>Na_m</ci>
+                                    <ci>q_Na_m</ci>
                                     <cn cellml:units="dimensionless">2</cn>
                                 </apply>
-                                <ci>glucose_m</ci>
+                                <ci>q_glucose_m</ci>
                             </apply>
                             <apply>
                                 <times/>
                                 <ci>phi</ci>
                                 <apply>
                                     <power/>
-                                    <ci>Na_m</ci>
+                                    <ci>q_Na_m</ci>
                                     <cn cellml:units="dimensionless">2</cn>
                                 </apply>
                             </apply>
@@ -897,14 +897,14 @@
                         <apply>
                             <times/>
                             <ci>beta</ci>
-                            <ci>glucose_m</ci>
+                            <ci>q_glucose_m</ci>
                         </apply>
                         <apply>
                             <times/>
                             <ci>chi</ci>
                             <apply>
                                 <power/>
-                                <ci>Na_m</ci>
+                                <ci>q_Na_m</ci>
                                 <cn cellml:units="dimensionless">2</cn>
                             </apply>
                         </apply>
@@ -912,10 +912,10 @@
                             <times/>
                             <apply>
                                 <power/>
-                                <ci>Na_m</ci>
+                                <ci>q_Na_m</ci>
                                 <cn cellml:units="dimensionless">2</cn>
                             </apply>
-                            <ci>glucose_m</ci>
+                            <ci>q_glucose_m</ci>
                         </apply>
                     </apply>
                 </apply>

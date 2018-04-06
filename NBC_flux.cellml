@@ -3,11 +3,10 @@
     <component name="NBC">
         <variable name="A_Apical" public_interface="in" units="m2"/>
         <variable name="v_sc" public_interface="in" units="volt"/>
-        <variable name="v_cell" public_interface="in" units="m3"/>
-        <variable name="Na_i" public_interface="in" units="M"/>
-        <variable name="Na_s" public_interface="in" units="M"/>
-        <variable name="HCO3_i" public_interface="in" units="M"/>
-        <variable name="HCO3_s" public_interface="in" units="M"/>
+        <variable name="q_Na_i" public_interface="in" units="M"/>
+        <variable name="q_Na_s" public_interface="in" units="M"/>
+        <variable name="q_HCO3_i" public_interface="in" units="M"/>
+        <variable name="q_HCO3_s" public_interface="in" units="M"/>
         <variable initial_value="0.01" name="g_NBC" public_interface="out" units="S_per_m2"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
         <variable name="R" public_interface="in" units="J_per_K_per_mol"/>
@@ -48,15 +47,15 @@
                             <times/>
                             <apply>
                                 <divide/>
-                                <ci>Na_s</ci>
-                                <ci>Na_i</ci>
+                                <ci>q_Na_s</ci>
+                                <ci>q_Na_i</ci>
                             </apply>
                             <apply>
                                 <power/>
                                 <apply>
                                     <divide/>
-                                    <ci>HCO3_s</ci>
-                                    <ci>HCO3_i</ci>
+                                    <ci>q_HCO3_s</ci>
+                                    <ci>q_HCO3_i</ci>
                                 </apply>
                                 <cn cellml:units="dimensionless">2</cn>
                             </apply>

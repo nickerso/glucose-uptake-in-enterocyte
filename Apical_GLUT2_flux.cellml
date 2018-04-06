@@ -11,8 +11,8 @@ Link in Exposure: -->
         <variable initial_value="1" name="K_43" public_interface="out" units="per_M_per_second"/>
         <variable initial_value="1" name="K_41" public_interface="out" units="per_second"/>
         <variable initial_value="11" name="K_14" public_interface="out" units="per_second"/>
-        <variable name="glucose_i" public_interface="in" units="M"/>
-        <variable name="glucose_m" public_interface="in" units="M"/>
+        <variable name="q_glucose_i" public_interface="in" units="M"/>
+        <variable name="q_glucose_m" public_interface="in" units="M"/>
         <variable name="K_S" public_interface="out" units="M"/>
         <variable name="J_A_GLUT" public_interface="out" units="umol_per_s"/>
         <variable name="C_tot" public_interface="out" units="mole"/>
@@ -60,7 +60,7 @@ Link in Exposure: -->
                                 <times/>
                                 <ci>K_23</ci>
                                 <ci>K_41</ci>
-                                <ci>glucose_m</ci>
+                                <ci>q_glucose_m</ci>
                             </apply>
                             <ci>K_S</ci>
                         </apply>
@@ -70,7 +70,7 @@ Link in Exposure: -->
                                 <times/>
                                 <ci>K_32</ci>
                                 <ci>K_14</ci>
-                                <ci>glucose_i</ci>
+                                <ci>q_glucose_i</ci>
                             </apply>
                             <ci>K_S</ci>
                         </apply>
@@ -89,7 +89,7 @@ Link in Exposure: -->
                             <cn cellml:units="dimensionless">1</cn>
                             <apply>
                                 <divide/>
-                                <ci>glucose_m</ci>
+                                <ci>q_glucose_m</ci>
                                 <ci>K_S</ci>
                             </apply>
                         </apply>
@@ -100,7 +100,7 @@ Link in Exposure: -->
                                 <apply>
                                     <times/>
                                     <ci>K_32</ci>
-                                    <ci>glucose_i</ci>
+                                    <ci>q_glucose_i</ci>
                                 </apply>
                                 <ci>K_S</ci>
                             </apply>
@@ -114,7 +114,7 @@ Link in Exposure: -->
                             <cn cellml:units="dimensionless">1</cn>
                             <apply>
                                 <divide/>
-                                <ci>glucose_i</ci>
+                                <ci>q_glucose_i</ci>
                                 <ci>K_S</ci>
                             </apply>
                         </apply>
@@ -125,7 +125,7 @@ Link in Exposure: -->
                                 <apply>
                                     <times/>
                                     <ci>K_23</ci>
-                                    <ci>glucose_m</ci>
+                                    <ci>q_glucose_m</ci>
                                 </apply>
                                 <ci>K_S</ci>
                             </apply>

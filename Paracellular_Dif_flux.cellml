@@ -5,12 +5,12 @@ Original paper: Schultz, S. G. (1980). Basic principles of membrane transport (V
 <model name="my_model" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <component name="Paracellular_Diffusion">
         <variable name="v_ms" public_interface="in" units="volt"/>
-        <variable name="Na_m" public_interface="in" units="M"/>
-        <variable name="K_m" public_interface="in" units="M"/>
-        <variable name="Cl_m" public_interface="in" units="M"/>
-        <variable name="Na_s" public_interface="in" units="M"/>
-        <variable name="K_s" public_interface="in" units="M"/>
-        <variable name="Cl_s" public_interface="in" units="M"/>
+        <variable name="q_Na_m" public_interface="in" units="M"/>
+        <variable name="q_K_m" public_interface="in" units="M"/>
+        <variable name="q_Cl_m" public_interface="in" units="M"/>
+        <variable name="q_Na_s" public_interface="in" units="M"/>
+        <variable name="q_K_s" public_interface="in" units="M"/>
+        <variable name="q_Cl_s" public_interface="in" units="M"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
         <variable name="z_Na" public_interface="in" units="dimensionless"/>
         <variable name="z_k" public_interface="in" units="dimensionless"/>
@@ -58,10 +58,10 @@ Original paper: Schultz, S. G. (1980). Basic principles of membrane transport (V
                             </apply>
                             <apply>
                                 <minus/>
-                                <ci>Na_m</ci>
+                                <ci>q_Na_m</ci>
                                 <apply>
                                     <times/>
-                                    <ci>Na_s</ci>
+                                    <ci>q_Na_s</ci>
                                     <apply>
                                         <exp/>
                                         <apply>
@@ -146,10 +146,10 @@ Original paper: Schultz, S. G. (1980). Basic principles of membrane transport (V
                             </apply>
                             <apply>
                                 <minus/>
-                                <ci>K_m</ci>
+                                <ci>q_K_m</ci>
                                 <apply>
                                     <times/>
-                                    <ci>K_s</ci>
+                                    <ci>q_K_s</ci>
                                     <apply>
                                         <exp/>
                                         <apply>
@@ -234,10 +234,10 @@ Original paper: Schultz, S. G. (1980). Basic principles of membrane transport (V
                             </apply>
                             <apply>
                                 <minus/>
-                                <ci>Cl_m</ci>
+                                <ci>q_Cl_m</ci>
                                 <apply>
                                     <times/>
-                                    <ci>Cl_s</ci>
+                                    <ci>q_Cl_s</ci>
                                     <apply>
                                         <exp/>
                                         <apply>

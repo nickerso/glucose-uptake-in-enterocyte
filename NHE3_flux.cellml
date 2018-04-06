@@ -4,13 +4,13 @@
 <model name="NHE3_flux" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <component name="NHE3">
         <variable name="A_Apical" public_interface="in" units="m2"/>
-        <variable name="v_cell" public_interface="in" units="m3"/>
-        <variable name="Na_m" public_interface="in" units="M"/>
-        <variable name="Na_i" public_interface="in" units="M"/>
-        <variable name="H_Ext" public_interface="in" units="M"/>
-        <variable name="H_int" public_interface="in" units="M"/>
-        <variable initial_value="0.0" name="NH4_ext" public_interface="out" units="M"/>
-        <variable initial_value="0.0" name="NH4_int" public_interface="out" units="M"/>
+        <variable name="V_cell" public_interface="in" units="m3"/>
+        <variable name="q_Na_m" public_interface="in" units="M"/>
+        <variable name="q_Na_i" public_interface="in" units="M"/>
+        <variable name="q_H_Ext" public_interface="in" units="M"/>
+        <variable name="q_H_int" public_interface="in" units="M"/>
+        <variable initial_value="0.0" name="q_NH4_ext" public_interface="out" units="M"/>
+        <variable initial_value="0.0" name="q_NH4_int" public_interface="out" units="M"/>
         <variable name="J_NHE3_Na" public_interface="out" units="umol_per_s"/>
         <variable name="J_NHE3_H1" public_interface="out" units="umol_per_s"/>
         <variable name="J_NHE3_H" public_interface="out" units="umol_per_s"/>
@@ -45,7 +45,7 @@
                 <ci>alpha_ext_Na</ci>
                 <apply>
                     <divide/>
-                    <ci>Na_m</ci>
+                    <ci>q_Na_m</ci>
                     <ci>K_Na</ci>
                 </apply>
             </apply>
@@ -54,7 +54,7 @@
                 <ci>alpha_int_Na</ci>
                 <apply>
                     <divide/>
-                    <ci>Na_i</ci>
+                    <ci>q_Na_i</ci>
                     <ci>K_Na</ci>
                 </apply>
             </apply>
@@ -63,7 +63,7 @@
                 <ci>beta_ext_H</ci>
                 <apply>
                     <divide/>
-                    <ci>H_Ext</ci>
+                    <ci>q_H_Ext</ci>
                     <ci>K_H</ci>
                 </apply>
             </apply>
@@ -72,7 +72,7 @@
                 <ci>beta_int_H</ci>
                 <apply>
                     <divide/>
-                    <ci>H_int</ci>
+                    <ci>q_H_int</ci>
                     <ci>K_H</ci>
                 </apply>
             </apply>
@@ -81,7 +81,7 @@
                 <ci>gamma_ext_NH4</ci>
                 <apply>
                     <divide/>
-                    <ci>NH4_ext</ci>
+                    <ci>q_NH4_ext</ci>
                     <ci>K_NH4</ci>
                 </apply>
             </apply>
@@ -90,7 +90,7 @@
                 <ci>gamma_int_NH4</ci>
                 <apply>
                     <divide/>
-                    <ci>NH4_int</ci>
+                    <ci>q_NH4_int</ci>
                     <ci>K_NH4</ci>
                 </apply>
             </apply>
@@ -107,7 +107,7 @@
                             <apply>
                                 <times/>
                                 <ci>f_M</ci>
-                                <ci>H_int</ci>
+                                <ci>q_H_int</ci>
                             </apply>
                             <apply>
                                 <times/>
@@ -118,7 +118,7 @@
                     </apply>
                     <apply>
                         <plus/>
-                        <ci>H_int</ci>
+                        <ci>q_H_int</ci>
                         <ci>K_I</ci>
                     </apply>
                 </apply>
@@ -136,7 +136,7 @@
                             <apply>
                                 <times/>
                                 <ci>f_M</ci>
-                                <ci>H_int</ci>
+                                <ci>q_H_int</ci>
                             </apply>
                             <apply>
                                 <times/>
@@ -147,7 +147,7 @@
                     </apply>
                     <apply>
                         <plus/>
-                        <ci>H_int</ci>
+                        <ci>q_H_int</ci>
                         <ci>K_I</ci>
                     </apply>
                 </apply>
@@ -165,7 +165,7 @@
                             <apply>
                                 <times/>
                                 <ci>f_M</ci>
-                                <ci>H_int</ci>
+                                <ci>q_H_int</ci>
                             </apply>
                             <apply>
                                 <times/>
@@ -176,7 +176,7 @@
                     </apply>
                     <apply>
                         <plus/>
-                        <ci>H_int</ci>
+                        <ci>q_H_int</ci>
                         <ci>K_I</ci>
                     </apply>
                 </apply>
