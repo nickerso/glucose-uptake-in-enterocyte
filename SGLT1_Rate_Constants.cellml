@@ -1,0 +1,218 @@
+<?xml version='1.0'?>
+<!--Link in Exposure : https://models.physiomeproject.org/exposure/4f0e5558031705df771326fb9bd90c28
+ Original Paper: Xing-Zhen Chen, Michael J Coady, Francis Jackson, Alfred Berteloot, and Jean-Yves Lapointe. Thermodynamic determination of the Na+: glucose coupling ratio for the human sglt1 cotransporter.        -->
+<model name="SGLT1_Rate_Constants" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <component name="SGLT1_rate_constants">
+        <variable name="q_Na_i" public_interface="in" units="M"/>
+        <variable name="q_Na_m" public_interface="in" units="M"/>
+        <variable name="q_glucose_i" public_interface="in" units="M"/>
+        <variable name="q_glucose_m" public_interface="in" units="M"/>
+        <variable name="k_12" public_interface="out" units="per_second"/>
+        <variable name="ks_12" public_interface="out" units="per_M2_per_second"/>
+        <variable name="k_21" public_interface="out" units="per_second"/>
+        <variable name="k_32" public_interface="out" units="per_second"/>
+        <variable name="k_25" public_interface="out" units="per_second"/>
+        <variable name="k_52" public_interface="out" units="per_second"/>
+        <variable name="k_34" public_interface="out" units="per_second"/>
+        <variable name="k_43" public_interface="out" units="per_second"/>
+        <variable name="k_45" public_interface="out" units="per_second"/>
+        <variable name="k_54" public_interface="out" units="per_second"/>
+        <variable name="k_56" public_interface="out" units="per_second"/>
+        <variable name="k_65" public_interface="out" units="per_second"/>
+        <variable name="k_61" public_interface="out" units="per_second"/>
+        <variable name="k_16" public_interface="out" units="per_second"/>
+        <variable name="k0_12" public_interface="in" units="per_M2_per_second"/>
+        <variable name="k0_21" public_interface="in" units="per_second"/>
+        <variable name="k0_32" public_interface="in" units="per_second"/>
+        <variable name="k0_25" public_interface="in" units="per_second"/>
+        <variable name="k0_52" public_interface="in" units="per_second"/>
+        <variable name="k0_34" public_interface="in" units="per_second"/>
+        <variable name="k0_43" public_interface="in" units="per_second"/>
+        <variable name="k0_45" public_interface="in" units="per_second"/>
+        <variable name="k0_54" public_interface="in" units="per_M_per_second"/>
+        <variable name="k0_56" public_interface="in" units="per_second"/>
+        <variable name="k0_65" public_interface="in" units="per_M2_per_second"/>
+        <variable name="k0_61" public_interface="in" units="per_second"/>
+        <variable name="k0_16" public_interface="in" units="per_second"/>
+        <variable name="delta" public_interface="in" units="dimensionless"/>
+        <variable name="n" public_interface="in" units="dimensionless"/>
+        <variable name="z_c" public_interface="in" units="dimensionless"/>
+        <variable name="z_Na" public_interface="in" units="dimensionless"/>
+        <variable name="alpha_p" public_interface="in" units="dimensionless"/>
+        <variable name="mu" public_interface="in" units="dimensionless"/>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <ci>ks_12</ci>
+                <apply>
+                    <times/>
+                    <ci>k0_12</ci>
+                    <apply>
+                        <exp/>
+                        <apply>
+                            <divide/>
+                            <apply>
+                                <times/>
+                                <apply>
+                                    <minus/>
+                                    <ci>n</ci>
+                                </apply>
+                                <ci>alpha_p</ci>
+                                <ci>mu</ci>
+                            </apply>
+                            <cn cellml:units="dimensionless">2</cn>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>k_12</ci>
+                <apply>
+                    <times/>
+                    <ci>k0_12</ci>
+                    <apply>
+                        <exp/>
+                        <apply>
+                            <times/>
+                            <apply>
+                                <minus/>
+                                <ci>alpha_p</ci>
+                            </apply>
+                            <ci>mu</ci>
+                        </apply>
+                    </apply>
+                    <apply>
+                        <power/>
+                        <ci>q_Na_m</ci>
+                        <cn cellml:units="dimensionless">2</cn>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>k_21</ci>
+                <apply>
+                    <times/>
+                    <ci>k0_21</ci>
+                    <apply>
+                        <exp/>
+                        <apply>
+                            <divide/>
+                            <apply>
+                                <times/>
+                                <ci>n</ci>
+                                <ci>z_Na</ci>
+                                <ci>alpha_p</ci>
+                                <ci>mu</ci>
+                            </apply>
+                            <cn cellml:units="dimensionless">2</cn>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>k_32</ci>
+                <ci>k0_32</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>k_34</ci>
+                <ci>k0_34</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>k_43</ci>
+                <ci>k0_43</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>k_45</ci>
+                <ci>k0_45</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>k_54</ci>
+                <apply>
+                    <times/>
+                    <ci>k0_54</ci>
+                    <ci>q_glucose_i</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>k_25</ci>
+                <ci>k0_25</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>k_56</ci>
+                <ci>k0_56</ci>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>k_65</ci>
+                <apply>
+                    <times/>
+                    <ci>k0_65</ci>
+                    <apply>
+                        <power/>
+                        <ci>q_Na_i</ci>
+                        <cn cellml:units="dimensionless">2</cn>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>k_61</ci>
+                <apply>
+                    <times/>
+                    <ci>k0_61</ci>
+                    <apply>
+                        <exp/>
+                        <apply>
+                            <divide/>
+                            <apply>
+                                <times/>
+                                <ci>z_c</ci>
+                                <ci>delta</ci>
+                                <ci>mu</ci>
+                            </apply>
+                            <cn cellml:units="dimensionless">2</cn>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>k_16</ci>
+                <apply>
+                    <times/>
+                    <ci>k0_16</ci>
+                    <apply>
+                        <exp/>
+                        <apply>
+                            <divide/>
+                            <apply>
+                                <times/>
+                                <apply>
+                                    <minus/>
+                                    <ci>z_c</ci>
+                                </apply>
+                                <ci>delta</ci>
+                                <ci>mu</ci>
+                            </apply>
+                            <cn cellml:units="dimensionless">2</cn>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>k_52</ci>
+                <ci>k0_52</ci>
+            </apply>
+        </math>
+    </component>
+</model>
