@@ -411,7 +411,6 @@
     <connection>
         <map_components component_1="parameters" component_2="NHE3"/>
         <map_variables variable_1="F" variable_2="F"/>
-        <map_variables variable_1="A_Apical" variable_2="A_Apical"/>
         <map_variables variable_1="V_cell" variable_2="V_cell"/>
     </connection>
     <connection>
