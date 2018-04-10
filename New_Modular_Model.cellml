@@ -129,10 +129,9 @@
         <variable name="q_K_i" private_interface="in" public_interface="out" units="M"/>
         <variable name="v_sc" private_interface="in" public_interface="out" units="volt"/>
         <variable name="v_ms" private_interface="in" public_interface="out" units="volt"/>
-        <variable name="q_H_int" private_interface="in" public_interface="out" units="M"/>
+        <variable name="q_H_i" private_interface="in" public_interface="out" units="M"/>
         <variable name="q_HCO3_i" private_interface="in" public_interface="out" units="M"/>
-        <variable name="pH_int" private_interface="in" public_interface="out" units="per_second"/>
-        <variable name="pH_Ext" private_interface="in" public_interface="out" units="per_second"/>
+        <variable name="pH_i" private_interface="in" public_interface="out" units="per_second"/>
     </component>
     <connection>
         <map_components component_1="environment" component_2="Enterocyte"/>
@@ -146,9 +145,8 @@
         <map_variables variable_1="q_K_i" variable_2="q_K_i"/>
         <map_variables variable_1="time" variable_2="time"/>
         <map_variables variable_1="q_HCO3_i" variable_2="q_HCO3_i"/>
-        <map_variables variable_1="q_H_int" variable_2="q_H_int"/>
-        <map_variables variable_1="pH_int" variable_2="pH_int"/>
-        <map_variables variable_1="pH_Ext" variable_2="pH_Ext"/>
+        <map_variables variable_1="q_H_i" variable_2="q_H_i"/>
+        <map_variables variable_1="pH_i" variable_2="pH_i"/>
     </connection>
     <connection>
         <map_components component_1="SGLT1_rate_constants" component_2="SGLT1"/>
@@ -403,8 +401,8 @@
     <connection>
         <map_components component_1="Cell_concentration" component_2="NHE3"/>
         <map_variables variable_1="q_Na_i" variable_2="q_Na_i"/>
-        <map_variables variable_1="q_H_int" variable_2="q_H_int"/>
-        <map_variables variable_1="q_H_Ext" variable_2="q_H_Ext"/>
+        <map_variables variable_1="q_H_i" variable_2="q_H_i"/>
+        <!--vars q_H_m and q_H_m;-->
         <map_variables variable_1="J_NHE3_Na" variable_2="J_NHE3_Na"/>
         <map_variables variable_1="J_NHE3_H" variable_2="J_NHE3_H"/>
     </connection>
@@ -421,6 +419,7 @@
     <connection>
         <map_components component_1="Apical_concentrations" component_2="NHE3"/>
         <map_variables variable_1="q_Na_m" variable_2="q_Na_m"/>
+        <map_variables variable_1="q_H_m" variable_2="q_H_m"/>
     </connection>
     <connection>
         <map_components component_1="Cell_concentration" component_2="NBC"/>

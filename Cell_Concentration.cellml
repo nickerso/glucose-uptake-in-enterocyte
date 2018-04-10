@@ -10,9 +10,7 @@
         <variable initial_value="60e-6" name="q_Ca_i" public_interface="out" units="M"/>
         <variable initial_value="57e-3" name="q_Cl_i" public_interface="out" units="M"/>
         <variable name="q_HCO3_i" public_interface="out" units="M"/>
-        <variable name="q_H_int" public_interface="out" units="M"/>
-        <variable name="q_H_Ext" public_interface="out" units="M"/>
-        <variable name="q_H_s" public_interface="out" units="M"/>
+        <variable name="q_H_i" public_interface="out" units="M"/>
         <variable name="V_cell" public_interface="in" units="m3"/>
         <variable name="A_Apical" public_interface="in" units="m2"/>
         <variable name="J_Na_SGLT" public_interface="in" units="umol_per_s"/>
@@ -33,14 +31,13 @@
         <variable name="J_IK" public_interface="in" units="umol_per_s"/>
         <variable name="J_BK" public_interface="in" units="umol_per_s"/>
         <variable name="time" private_interface="out" public_interface="in" units="second"/>
-        <variable initial_value="7" name="pH_int" public_interface="out" units="per_second"/>
-        <variable initial_value="7" name="pH_Ext" public_interface="out" units="per_second"/>
-        <variable initial_value="7" name="pH_s" public_interface="out" units="per_second"/>
+        <variable initial_value="7" name="pH_i" public_interface="out" units="per_second"/>
         <variable initial_value="1.68e6" name="rho" public_interface="out" units="per_meter"/>
         <variable name="beta" public_interface="out" units="M"/>
         <variable initial_value="6.1" name="p_K" public_interface="out" units="dimensionless"/>
         <variable initial_value="40" name="P_CO2" public_interface="out" units="dimensionless"/>
         <variable initial_value="0.03e-3" name="s" public_interface="out" units="dimensionless"/>
+        <!--theta is only a coefficient and it has a variable of 0 and 1 in order to turn on/off the channel -->
         <variable initial_value="1" name="theta_1" units="dimensionless"/>
         <variable initial_value="1" name="theta_2" units="dimensionless"/>
         <variable initial_value="1" name="theta_3" units="dimensionless"/>
@@ -261,7 +258,7 @@
                     <bvar>
                         <ci>time</ci>
                     </bvar>
-                    <ci>pH_int</ci>
+                    <ci>pH_i</ci>
                 </apply>
                 <apply>
                     <times/>
@@ -303,13 +300,13 @@
             </apply>
             <apply>
                 <eq/>
-                <ci>q_H_int</ci>
+                <ci>q_H_i</ci>
                 <apply>
                     <power/>
                     <cn cellml:units="dimensionless">10</cn>
                     <apply>
                         <minus/>
-                        <ci>pH_int</ci>
+                        <ci>pH_i</ci>
                     </apply>
                 </apply>
             </apply>
@@ -325,33 +322,9 @@
                         <cn cellml:units="dimensionless">10</cn>
                         <apply>
                             <minus/>
-                            <ci>pH_int</ci>
+                            <ci>pH_i</ci>
                             <ci>p_K</ci>
                         </apply>
-                    </apply>
-                </apply>
-            </apply>
-            <apply>
-                <eq/>
-                <ci>q_H_Ext</ci>
-                <apply>
-                    <power/>
-                    <cn cellml:units="dimensionless">10</cn>
-                    <apply>
-                        <minus/>
-                        <ci>pH_Ext</ci>
-                    </apply>
-                </apply>
-            </apply>
-            <apply>
-                <eq/>
-                <ci>q_H_s</ci>
-                <apply>
-                    <power/>
-                    <cn cellml:units="dimensionless">10</cn>
-                    <apply>
-                        <minus/>
-                        <ci>pH_s</ci>
                     </apply>
                 </apply>
             </apply>

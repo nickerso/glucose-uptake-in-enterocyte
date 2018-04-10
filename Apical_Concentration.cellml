@@ -6,5 +6,7 @@
         <variable initial_value="50e-3" name="q_glucose_m" public_interface="out" units="M"/>
         <variable initial_value="106e-3" name="q_Cl_m" public_interface="out" units="M"/>
         <variable initial_value="3e-3" name="q_HCO3_m" public_interface="out" units="M"/>
+        <variable initial_value="1e-7" name="q_H_m" public_interface="out" units="M"/>
+        <variable initial_value="7" name="pH_m" public_interface="out" units="per_second"/>
     </component>
 </model>

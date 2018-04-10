@@ -142,7 +142,7 @@
         </dataGenerator>
         <dataGenerator id="yDataGenerator6_1">
             <listOfVariables>
-                <variable id="yVariable6_1" target="/cellml:model/cellml:component[@name='Enterocyte']/cellml:variable[@name='pH_int']" taskReference="repeatedTask"/>
+                <variable id="yVariable6_1" target="/cellml:model/cellml:component[@name='Enterocyte']/cellml:variable[@name='pH_i']" taskReference="repeatedTask"/>
             </listOfVariables>
             <math xmlns="http://www.w3.org/1998/Math/MathML">
                 <ci> yVariable6_1 </ci>
