@@ -4,8 +4,8 @@
         <variable name="time" public_interface="out" units="second"/>
     </component>
     <component name="Basol_voltage">
-        <variable initial_value="-50e-3" name="v_sc" public_interface="out" units="volt"/>
-        <variable name="time" private_interface="out" public_interface="in" units="second"/>
+        <variable initial_value="-0.05" name="v_sc" public_interface="out" units="volt"/>
+        <variable name="time" public_interface="in" units="second"/>
         <variable name="capacitance" public_interface="in" units="uF"/>
         <variable name="I_Na_NaK" public_interface="in" units="uA"/>
         <variable name="I_K_NaK" public_interface="in" units="uA"/>
@@ -15,6 +15,7 @@
         <variable name="I_NBC_Na" public_interface="in" units="uA"/>
         <variable name="I_NBC_HCO3" public_interface="in" units="uA"/>
         <variable name="I_IK" public_interface="in" units="uA"/>
+        <!--var I_GLUT: uA {pub: in};-->
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -37,46 +38,33 @@
                                 <apply>
                                     <minus/>
                                     <apply>
-                                        <minus/>
+                                        <plus/>
                                         <apply>
                                             <minus/>
-                                            <apply>
-                                                <plus/>
-                                                <apply>
-                                                    <times/>
-                                                    <cn cellml:units="dimensionless">1</cn>
-                                                    <apply>
-                                                        <plus/>
-                                                        <apply>
-                                                            <minus/>
-                                                            <ci>I_Na_NaK</ci>
-                                                        </apply>
-                                                        <ci>I_K_NaK</ci>
-                                                    </apply>
-                                                </apply>
-                                                <apply>
-                                                    <times/>
-                                                    <cn cellml:units="dimensionless">1</cn>
-                                                    <ci>I_NBC_Na</ci>
-                                                </apply>
-                                            </apply>
-                                            <apply>
-                                                <times/>
-                                                <cn cellml:units="dimensionless">1</cn>
-                                                <ci>I_NBC_HCO3</ci>
-                                            </apply>
+                                            <ci>I_Na_NaK</ci>
                                         </apply>
+                                        <ci>I_K_NaK</ci>
                                         <apply>
                                             <times/>
                                             <cn cellml:units="dimensionless">1</cn>
-                                            <ci>I_D_P_Na</ci>
+                                            <ci>I_NBC_Na</ci>
                                         </apply>
                                     </apply>
                                     <apply>
                                         <times/>
                                         <cn cellml:units="dimensionless">1</cn>
-                                        <ci>I_D_P_K</ci>
+                                        <ci>I_NBC_HCO3</ci>
                                     </apply>
+                                </apply>
+                                <apply>
+                                    <times/>
+                                    <cn cellml:units="dimensionless">1</cn>
+                                    <ci>I_D_P_Na</ci>
+                                </apply>
+                                <apply>
+                                    <times/>
+                                    <cn cellml:units="dimensionless">1</cn>
+                                    <ci>I_D_P_K</ci>
                                 </apply>
                                 <apply>
                                     <times/>

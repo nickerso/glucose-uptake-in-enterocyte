@@ -6,6 +6,9 @@
     <units name="per_second2">
         <unit exponent="-1" units="second"/>
     </units>
+    <!--    def unit per_second5 as
+        unit second {expo: -5};
+    enddef;-->
     <units name="volt_per_second">
         <unit units="volt"/>
         <unit exponent="-1" units="second"/>
@@ -63,6 +66,9 @@
     <units name="m3">
         <unit exponent="3" units="metre"/>
     </units>
+    <!--    def unit litre as
+        unit m3 {pref: milli};
+    enddef;-->
     <units name="mol_per_um2">
         <unit units="mole"/>
         <unit exponent="-1" units="um2"/>
@@ -150,6 +156,11 @@
         <unit units="mole"/>
         <unit exponent="-1" units="m2"/>
     </units>
+    <!--    def unit uM_per_cm2_per_s as
+        unit uM;
+        unit cm2 {expo: -1};
+        unit second {expo: -1};
+    enddef;-->
     <units name="Farad">
         <unit exponent="-1" units="volt"/>
         <unit units="coulomb"/>

@@ -1,12 +1,19 @@
 <?xml version='1.0'?>
 <model name="Apical_Concentrations" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <component name="Apical_concentrations">
-        <variable initial_value="105e-3" name="q_Na_m" public_interface="out" units="M"/>
-        <variable initial_value="4e-3" name="q_K_m" public_interface="out" units="M"/>
-        <variable initial_value="50e-3" name="q_glucose_m" public_interface="out" units="M"/>
-        <variable initial_value="106e-3" name="q_Cl_m" public_interface="out" units="M"/>
-        <variable initial_value="3e-3" name="q_HCO3_m" public_interface="out" units="M"/>
-        <variable initial_value="1e-7" name="q_H_m" public_interface="out" units="M"/>
-        <variable initial_value="7" name="pH_m" public_interface="out" units="per_second"/>
+        <variable initial_value="0.105" name="Na_m" public_interface="out" units="M"/>
+        <variable initial_value="0.004" name="K_m" public_interface="out" units="M"/>
+        <variable initial_value="0.05" name="glucose_m" public_interface="out" units="M"/>
+        <variable initial_value="0.106" name="Cl_m" public_interface="out" units="M"/>
+        <!--        var k: per_second {init: 0.2, pub: out};
+        var glucose_0: M {init: 20e-3, pub: out};
+        var glucose_f: M {init: 0.1e-3, pub: out};
+        var time: second {pub: in};-->
+        <!--        glucose_m = sel
+            case (time >= 0{second}) and (time < 60{second}):
+                0.1e-3{M};
+            case time >= 60{second}:
+                (glucose_0-glucose_f)*exp(-k*(time-60{second}))+glucose_f;
+        endsel;-->
     </component>
 </model>

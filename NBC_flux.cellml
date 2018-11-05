@@ -1,17 +1,21 @@
 <?xml version='1.0'?>
 <model name="NBC_flux" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <component name="NBC">
+        <!--var time: second {pub: in};-->
         <variable name="A_Apical" public_interface="in" units="m2"/>
         <variable name="v_sc" public_interface="in" units="volt"/>
-        <variable name="q_Na_i" public_interface="in" units="M"/>
-        <variable name="q_Na_s" public_interface="in" units="M"/>
-        <variable name="q_HCO3_i" public_interface="in" units="M"/>
-        <variable name="q_HCO3_s" public_interface="in" units="M"/>
-        <variable initial_value="0.01" name="g_NBC" public_interface="out" units="S_per_m2"/>
+        <variable name="v_cell" public_interface="in" units="m3"/>
+        <variable name="Na_i" public_interface="in" units="M"/>
+        <variable name="Na_s" public_interface="in" units="M"/>
+        <variable name="HCO3_i" public_interface="in" units="M"/>
+        <variable name="HCO3_s" public_interface="in" units="M"/>
+        <variable initial_value="0.08" name="g_NBC" public_interface="out" units="S_per_m2"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
         <variable name="R" public_interface="in" units="J_per_K_per_mol"/>
         <variable name="T" public_interface="in" units="kelvin"/>
+        <!--kelvin {init: 300};-->
         <variable initial_value="2" name="n" units="dimensionless"/>
+        <!--var eps: M {init: 1e-12};-->
         <variable name="E_NBC" public_interface="out" units="volt"/>
         <variable name="J_NBC_Na" public_interface="out" units="umol_per_s"/>
         <variable name="J_NBC_HCO3" public_interface="out" units="umol_per_s"/>
@@ -47,15 +51,15 @@
                             <times/>
                             <apply>
                                 <divide/>
-                                <ci>q_Na_s</ci>
-                                <ci>q_Na_i</ci>
+                                <ci>Na_s</ci>
+                                <ci>Na_i</ci>
                             </apply>
                             <apply>
                                 <power/>
                                 <apply>
                                     <divide/>
-                                    <ci>q_HCO3_s</ci>
-                                    <ci>q_HCO3_i</ci>
+                                    <ci>HCO3_s</ci>
+                                    <ci>HCO3_i</ci>
                                 </apply>
                                 <cn cellml:units="dimensionless">2</cn>
                             </apply>
@@ -63,7 +67,6 @@
                     </apply>
                 </apply>
             </apply>
-            <!--1e6 is for unit consistency in order to change mole to Micormole -->
             <apply>
                 <eq/>
                 <ci>J_NBC_Na</ci>
@@ -76,8 +79,8 @@
                         <ci>A_Apical</ci>
                         <apply>
                             <minus/>
-                            <ci>E_NBC</ci>
                             <ci>v_sc</ci>
+                            <ci>E_NBC</ci>
                         </apply>
                     </apply>
                     <ci>F</ci>

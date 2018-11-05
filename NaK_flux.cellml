@@ -1,22 +1,21 @@
 <?xml version='1.0'?>
-<!-- Data from: Thorsen, K., Drengstig, T., & Ruoff, P. (2014). Transepithelial glucose transport and Na+/K+ homeostasis in enterocytes: an integrative model. American Journal of Physiology-Cell Physiology, 307(4), C320-C337.
-Original Paper: Thorsen, K., Drengstig, T., & Ruoff, P. (2014). Transepithelial glucose transport and Na+/K+ homeostasis in enterocytes: an integrative model. American Journal of Physiology-Cell Physiology, 307(4), C320-C337.-->
 <model name="NaK_flux" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <component name="NaK_channel">
         <!--var time: second {pub: in};-->
         <variable name="v_sc" public_interface="in" units="volt"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
-        <variable name="q_K_s" public_interface="in" units="M"/>
-        <variable name="q_Na_i" public_interface="in" units="M"/>
+        <variable name="K_s" public_interface="in" units="M"/>
+        <variable name="Na_i" public_interface="in" units="M"/>
         <variable name="TO_NaK" public_interface="out" units="per_second"/>
-        <variable initial_value="5e6" name="n_NaK" public_interface="out" units="dimensionless"/>
-        <variable initial_value="10e-3" name="K_Na_i_half" public_interface="out" units="M"/>
-        <variable initial_value="1.5e-3" name="K_K_s_half" public_interface="out" units="M"/>
+        <variable initial_value="5000000" name="n_NaK" public_interface="out" units="dimensionless"/>
+        <variable initial_value="0.01" name="K_Na_i_half" public_interface="out" units="M"/>
+        <variable initial_value="0.0015" name="K_K_s_half" public_interface="out" units="M"/>
         <variable name="I_Na_NaK" public_interface="out" units="uA"/>
         <variable name="I_K_NaK" public_interface="out" units="uA"/>
         <variable name="J_NaK" public_interface="out" units="umol_per_s"/>
         <variable name="J_Na_NaK" public_interface="out" units="umol_per_s"/>
         <variable name="J_K_NaK" public_interface="out" units="umol_per_s"/>
+        <!--var J_K_NaK: umol_per_s {pub: out};-->
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -58,7 +57,7 @@ Original Paper: Thorsen, K., Drengstig, T., & Ruoff, P. (2014). Transepithelial 
                                 </apply>
                                 <apply>
                                     <power/>
-                                    <ci>q_Na_i</ci>
+                                    <ci>Na_i</ci>
                                     <cn cellml:units="dimensionless">1.36</cn>
                                 </apply>
                                 <cn cellml:units="dimensionless">1.13</cn>
@@ -72,18 +71,18 @@ Original Paper: Thorsen, K., Drengstig, T., & Ruoff, P. (2014). Transepithelial 
                                 </apply>
                                 <apply>
                                     <power/>
-                                    <ci>q_Na_i</ci>
+                                    <ci>Na_i</ci>
                                     <cn cellml:units="dimensionless">1.36</cn>
                                 </apply>
                             </apply>
                         </apply>
                         <cn cellml:units="dimensionless">1.3</cn>
-                        <ci>q_K_s</ci>
+                        <ci>K_s</ci>
                     </apply>
                     <apply>
                         <plus/>
                         <ci>K_K_s_half</ci>
-                        <ci>q_K_s</ci>
+                        <ci>K_s</ci>
                     </apply>
                 </apply>
             </apply>

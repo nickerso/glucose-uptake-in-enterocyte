@@ -1,16 +1,14 @@
 <?xml version='1.0'?>
-<!--Link in Exposure: https://models.physiomeproject.org/e/2e2/Weinstein_1995_NHE3.cellml/view
- Original paper: Weinstein, Alan M. "A kinetically defined Na+/H+ antiporter within a mathematical model of the rat proximal tubule." The Journal of general physiology 105.5 (1995): 617-641.-->
 <model name="NHE3_flux" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <component name="NHE3">
-        <!--var A_Apical: m2 {pub: in};-->
-        <variable name="V_cell" public_interface="in" units="m3"/>
-        <variable name="q_Na_m" public_interface="in" units="M"/>
-        <variable name="q_Na_i" public_interface="in" units="M"/>
-        <variable name="q_H_m" public_interface="in" units="M"/>
-        <variable name="q_H_i" public_interface="in" units="M"/>
-        <variable initial_value="0.0" name="q_NH4_m" public_interface="out" units="M"/>
-        <variable initial_value="0.0" name="q_NH4_i" public_interface="out" units="M"/>
+        <variable name="A_Apical" public_interface="in" units="m2"/>
+        <variable name="v_cell" public_interface="in" units="m3"/>
+        <variable name="Na_m" public_interface="in" units="M"/>
+        <variable name="Na_i" public_interface="in" units="M"/>
+        <variable name="H_Ext" public_interface="in" units="M"/>
+        <variable name="H_int" public_interface="in" units="M"/>
+        <variable initial_value="0" name="NH4_ext" public_interface="out" units="M"/>
+        <variable initial_value="0" name="NH4_int" public_interface="out" units="M"/>
         <variable name="J_NHE3_Na" public_interface="out" units="umol_per_s"/>
         <variable name="J_NHE3_H1" public_interface="out" units="umol_per_s"/>
         <variable name="J_NHE3_H" public_interface="out" units="umol_per_s"/>
@@ -18,20 +16,20 @@
         <variable name="J_NHE3_Na_Max" public_interface="out" units="umol_per_s"/>
         <variable name="I_NHE3_H" public_interface="out" units="uA"/>
         <variable name="I_NHE3_Na" public_interface="out" units="uA"/>
-        <variable initial_value="2e-3" name="x_T" units="M"/>
+        <variable initial_value="0.001" name="x_T" units="M"/>
         <variable name="sigma" units="per_second"/>
         <variable name="P_Na" units="per_second"/>
         <variable name="P_H" units="per_second"/>
         <variable name="P_NH4" units="per_second"/>
-        <variable initial_value="16" name="P0_Na" units="per_second"/>
-        <variable initial_value="4.8" name="P0_H" units="per_second"/>
-        <variable initial_value="16" name="P0_NH4" units="per_second"/>
-        <variable initial_value="30e-3" name="K_Na" units="M"/>
-        <variable initial_value="72e-9" name="K_H" units="M"/>
-        <variable initial_value="27e-3" name="K_NH4" units="M"/>
-        <variable initial_value="1.0e-9" name="K_I" units="M"/>
-        <variable initial_value="0.0" name="f_m" units="dimensionless"/>
-        <variable initial_value="2.0" name="f_M" units="dimensionless"/>
+        <variable initial_value="1.6" name="P0_Na" units="per_second"/>
+        <variable initial_value="0.48" name="P0_H" units="per_second"/>
+        <variable initial_value="1.6" name="P0_NH4" units="per_second"/>
+        <variable initial_value="0.03" name="K_Na" units="M"/>
+        <variable initial_value="7.2e-8" name="K_H" units="M"/>
+        <variable initial_value="0.027" name="K_NH4" units="M"/>
+        <variable initial_value="1e-9" name="K_I" units="M"/>
+        <variable initial_value="0" name="f_m" units="dimensionless"/>
+        <variable initial_value="2" name="f_M" units="dimensionless"/>
         <variable name="alpha_ext_Na" units="dimensionless"/>
         <variable name="alpha_int_Na" units="dimensionless"/>
         <variable name="beta_ext_H" units="dimensionless"/>
@@ -39,13 +37,22 @@
         <variable name="gamma_ext_NH4" units="dimensionless"/>
         <variable name="gamma_int_NH4" units="dimensionless"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
+        <!--        var pH_Ext: dimensionless;
+        var pH_int: dimensionless;
+        var p_K: dimensionless {init: 6.1, pub: out};
+        var P_CO2: dimensionless {init: 40, pub: out};
+        var s: dimensionless {init: 0.03e-3, pub: out};
+        var HCO3_i: M {pub: in};
+        var HCO3_m: M {pub: in};-->
+        <!--        pH_Ext = p_K+log(HCO3_m/(s*P_CO2));
+        pH_int = p_K+log(HCO3_i/(s*P_CO2));-->
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
                 <ci>alpha_ext_Na</ci>
                 <apply>
                     <divide/>
-                    <ci>q_Na_m</ci>
+                    <ci>Na_m</ci>
                     <ci>K_Na</ci>
                 </apply>
             </apply>
@@ -54,7 +61,7 @@
                 <ci>alpha_int_Na</ci>
                 <apply>
                     <divide/>
-                    <ci>q_Na_i</ci>
+                    <ci>Na_i</ci>
                     <ci>K_Na</ci>
                 </apply>
             </apply>
@@ -63,7 +70,7 @@
                 <ci>beta_ext_H</ci>
                 <apply>
                     <divide/>
-                    <ci>q_H_m</ci>
+                    <ci>H_Ext</ci>
                     <ci>K_H</ci>
                 </apply>
             </apply>
@@ -72,7 +79,7 @@
                 <ci>beta_int_H</ci>
                 <apply>
                     <divide/>
-                    <ci>q_H_i</ci>
+                    <ci>H_int</ci>
                     <ci>K_H</ci>
                 </apply>
             </apply>
@@ -81,7 +88,7 @@
                 <ci>gamma_ext_NH4</ci>
                 <apply>
                     <divide/>
-                    <ci>q_NH4_m</ci>
+                    <ci>NH4_ext</ci>
                     <ci>K_NH4</ci>
                 </apply>
             </apply>
@@ -90,7 +97,7 @@
                 <ci>gamma_int_NH4</ci>
                 <apply>
                     <divide/>
-                    <ci>q_NH4_i</ci>
+                    <ci>NH4_int</ci>
                     <ci>K_NH4</ci>
                 </apply>
             </apply>
@@ -107,7 +114,7 @@
                             <apply>
                                 <times/>
                                 <ci>f_M</ci>
-                                <ci>q_H_i</ci>
+                                <ci>H_int</ci>
                             </apply>
                             <apply>
                                 <times/>
@@ -118,7 +125,7 @@
                     </apply>
                     <apply>
                         <plus/>
-                        <ci>q_H_i</ci>
+                        <ci>H_int</ci>
                         <ci>K_I</ci>
                     </apply>
                 </apply>
@@ -136,7 +143,7 @@
                             <apply>
                                 <times/>
                                 <ci>f_M</ci>
-                                <ci>q_H_i</ci>
+                                <ci>H_int</ci>
                             </apply>
                             <apply>
                                 <times/>
@@ -147,7 +154,7 @@
                     </apply>
                     <apply>
                         <plus/>
-                        <ci>q_H_i</ci>
+                        <ci>H_int</ci>
                         <ci>K_I</ci>
                     </apply>
                 </apply>
@@ -165,7 +172,7 @@
                             <apply>
                                 <times/>
                                 <ci>f_M</ci>
-                                <ci>q_H_i</ci>
+                                <ci>H_int</ci>
                             </apply>
                             <apply>
                                 <times/>
@@ -176,7 +183,7 @@
                     </apply>
                     <apply>
                         <plus/>
-                        <ci>q_H_i</ci>
+                        <ci>H_int</ci>
                         <ci>K_I</ci>
                     </apply>
                 </apply>
@@ -253,11 +260,8 @@
                         <divide/>
                         <apply>
                             <times/>
-                            <apply>
-                                <minus/>
-                                <cn cellml:units="dimensionless" type="e-notation">1<sep/>9</cn>
-                            </apply>
-                            <ci>V_cell</ci>
+                            <cn cellml:units="dimensionless" type="e-notation">1<sep/>9</cn>
+                            <ci>v_cell</ci>
                             <ci>x_T</ci>
                         </apply>
                         <ci>sigma</ci>
@@ -313,7 +317,7 @@
                         <apply>
                             <times/>
                             <cn cellml:units="dimensionless" type="e-notation">1<sep/>9</cn>
-                            <ci>V_cell</ci>
+                            <ci>v_cell</ci>
                             <ci>x_T</ci>
                         </apply>
                         <ci>sigma</ci>

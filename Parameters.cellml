@@ -1,5 +1,4 @@
 <?xml version='1.0'?>
-<!-- // Data from: Thorsen, K., Drengstig, T., & Ruoff, P. (2014). Transepithelial glucose transport and Na+/K+ homeostasis in enterocytes: an integrative model. American Journal of Physiology-Cell Physiology, 307(4), C320-C337.-->
 <model name="Parameters" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <component name="parameters">
         <variable initial_value="-1" name="z_Cl" public_interface="out" units="dimensionless"/>
@@ -11,12 +10,17 @@
         <variable initial_value="1e-5" name="capacitance" public_interface="out" units="uF"/>
         <variable initial_value="8.4e-10" name="A_Apical" public_interface="out" units="m2"/>
         <variable initial_value="5e-10" name="A_Basol" public_interface="out" units="m2"/>
-        <variable initial_value="5e-16" name="V_cell" public_interface="out" units="m3"/>
-        <variable initial_value="4.5e-8" name="P_P_Na" public_interface="out" units="m_per_s"/>
-        <variable initial_value="1e-6" name="P_P_k" public_interface="out" units="m_per_s"/>
-        <variable initial_value="3e-8" name="P_P_Cl" public_interface="out" units="m_per_s"/>
-        <!--SGLT1 parameters are from 6 states model
-Original Paper: Xing-Zhen Chen, Michael J Coady, Francis Jackson, Alfred Berteloot, and Jean-Yves Lapointe. Thermodynamic determination of the Na+: glucose coupling ratio for the human sglt1 cotransporter.        -->
+        <variable initial_value="2e-15" name="v_cell" public_interface="out" units="m3"/>
+        <variable initial_value="0" name="P_Na" public_interface="out" units="m_per_s"/>
+        <variable initial_value="0" name="P_k" public_interface="out" units="m_per_s"/>
+        <variable initial_value="0" name="P_Cl" public_interface="out" units="m_per_s"/>
+        <variable initial_value="1e-8" name="P_P_Na" public_interface="out" units="m_per_s"/>
+        <variable initial_value="5e-8" name="P_P_k" public_interface="out" units="m_per_s"/>
+        <variable initial_value="2.2e-8" name="P_P_Cl" public_interface="out" units="m_per_s"/>
+        <variable initial_value="0" name="P_Bl_Na" public_interface="out" units="m_per_s"/>
+        <variable initial_value="0" name="P_Bl_k" public_interface="out" units="m_per_s"/>
+        <variable initial_value="0" name="P_Bl_Cl" public_interface="out" units="m_per_s"/>
+        <!--var time: second {pub: out};-->
         <variable initial_value="14000" name="k0_12" public_interface="out" units="per_M2_per_second"/>
         <variable initial_value="300" name="k0_21" public_interface="out" units="per_second"/>
         <variable initial_value="15000" name="k0_23" public_interface="out" units="per_M_per_second"/>
@@ -28,16 +32,21 @@ Original Paper: Xing-Zhen Chen, Michael J Coady, Francis Jackson, Alfred Bertelo
         <variable initial_value="6" name="k0_45" public_interface="out" units="per_second"/>
         <variable initial_value="450" name="k0_54" public_interface="out" units="per_M_per_second"/>
         <variable initial_value="10" name="k0_56" public_interface="out" units="per_second"/>
-        <variable initial_value="2000" name="k0_65" public_interface="out" units="per_M2_per_second"/>
+        <variable initial_value="200" name="k0_65" public_interface="out" units="per_M2_per_second"/>
         <variable initial_value="25" name="k0_61" public_interface="out" units="per_second"/>
         <variable initial_value="600" name="k0_16" public_interface="out" units="per_second"/>
         <variable initial_value="0.7" name="delta" public_interface="out" units="dimensionless"/>
         <variable initial_value="0.3" name="alpha_p" public_interface="out" units="dimensionless"/>
         <variable initial_value="0" name="alpha_pp" public_interface="out" units="dimensionless"/>
+        <!--ar N_C: dimensionless {init: 6e10};
+var N_Avo: per_mol {init: 6.022e23};-->
+        <!--var C_T: umol {pub: out};-->
         <variable initial_value="2" name="n" public_interface="out" units="dimensionless"/>
         <variable initial_value="-2" name="z_c" public_interface="out" units="dimensionless"/>
         <variable name="v_mc" public_interface="in" units="volt"/>
         <variable name="mu" public_interface="out" units="dimensionless"/>
+        <!--alpha_p = 1{dimensionless}-delta-alpha_pp;-->
+        <!--C_T = 1e6{umol_per_mol}*N_C/N_Avo;-->
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>

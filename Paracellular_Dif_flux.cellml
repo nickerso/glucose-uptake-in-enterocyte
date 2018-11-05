@@ -1,16 +1,13 @@
 <?xml version='1.0'?>
-<!--Link in workspace: https://models.physiomeproject.org/workspace/2b8
-Original paper: Schultz, S. G. (1980). Basic principles of membrane transport (Vol. 2). CUP Archive.
- Data from: Thorsen, K., Drengstig, T., & Ruoff, P. (2014). Transepithelial glucose transport and Na+/K+ homeostasis in enterocytes: an integrative model. American Journal of Physiology-Cell Physiology, 307(4), C320-C337.-->
 <model name="my_model" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <component name="Paracellular_Diffusion">
         <variable name="v_ms" public_interface="in" units="volt"/>
-        <variable name="q_Na_m" public_interface="in" units="M"/>
-        <variable name="q_K_m" public_interface="in" units="M"/>
-        <variable name="q_Cl_m" public_interface="in" units="M"/>
-        <variable name="q_Na_s" public_interface="in" units="M"/>
-        <variable name="q_K_s" public_interface="in" units="M"/>
-        <variable name="q_Cl_s" public_interface="in" units="M"/>
+        <variable name="Na_m" public_interface="in" units="M"/>
+        <variable name="K_m" public_interface="in" units="M"/>
+        <variable name="Cl_m" public_interface="in" units="M"/>
+        <variable name="Na_s" public_interface="in" units="M"/>
+        <variable name="K_s" public_interface="in" units="M"/>
+        <variable name="Cl_s" public_interface="in" units="M"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
         <variable name="z_Na" public_interface="in" units="dimensionless"/>
         <variable name="z_k" public_interface="in" units="dimensionless"/>
@@ -27,84 +24,40 @@ Original paper: Schultz, S. G. (1980). Basic principles of membrane transport (V
         <variable name="I_D_P_K" public_interface="out" units="uA"/>
         <variable name="J_D_P_Cl" public_interface="out" units="umol_per_s"/>
         <variable name="I_D_P_Cl" public_interface="out" units="uA"/>
+        <variable name="J_D_Paracellular" public_interface="out" units="umol_per_s"/>
+        <variable name="V_P_Na" public_interface="out" units="volt"/>
+        <variable name="V_P_K" public_interface="out" units="volt"/>
+        <variable name="V_P_Cl" public_interface="out" units="volt"/>
+        <variable initial_value="10" name="G_P_Na" public_interface="out" units="S_per_m2"/>
+        <variable initial_value="3" name="G_P_K" public_interface="out" units="S_per_m2"/>
+        <variable initial_value="10" name="G_P_Cl" public_interface="out" units="S_per_m2"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
-                <ci>J_D_P_Na</ci>
+                <ci>V_P_Na</ci>
                 <apply>
                     <times/>
                     <apply>
                         <divide/>
                         <apply>
                             <times/>
-                            <apply>
-                                <divide/>
-                                <apply>
-                                    <times/>
-                                    <apply>
-                                        <minus/>
-                                        <cn cellml:units="litre_umol_per_mol_per_m3" type="e-notation">1<sep/>9</cn>
-                                    </apply>
-                                    <ci>P_P_Na</ci>
-                                    <ci>F</ci>
-                                    <ci>z_Na</ci>
-                                    <ci>v_ms</ci>
-                                </apply>
-                                <apply>
-                                    <times/>
-                                    <ci>R</ci>
-                                    <ci>T</ci>
-                                </apply>
-                            </apply>
-                            <apply>
-                                <minus/>
-                                <ci>q_Na_m</ci>
-                                <apply>
-                                    <times/>
-                                    <ci>q_Na_s</ci>
-                                    <apply>
-                                        <exp/>
-                                        <apply>
-                                            <divide/>
-                                            <apply>
-                                                <times/>
-                                                <ci>z_Na</ci>
-                                                <ci>F</ci>
-                                                <ci>v_ms</ci>
-                                            </apply>
-                                            <apply>
-                                                <times/>
-                                                <ci>R</ci>
-                                                <ci>T</ci>
-                                            </apply>
-                                        </apply>
-                                    </apply>
-                                </apply>
-                            </apply>
+                            <ci>R</ci>
+                            <ci>T</ci>
                         </apply>
                         <apply>
-                            <minus/>
-                            <cn cellml:units="dimensionless">1</cn>
-                            <apply>
-                                <exp/>
-                                <apply>
-                                    <divide/>
-                                    <apply>
-                                        <times/>
-                                        <ci>z_Na</ci>
-                                        <ci>F</ci>
-                                        <ci>v_ms</ci>
-                                    </apply>
-                                    <apply>
-                                        <times/>
-                                        <ci>R</ci>
-                                        <ci>T</ci>
-                                    </apply>
-                                </apply>
-                            </apply>
+                            <times/>
+                            <ci>z_Na</ci>
+                            <ci>F</ci>
                         </apply>
                     </apply>
-                    <ci>A_Apical</ci>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <divide/>
+                            <ci>Na_s</ci>
+                            <ci>Na_m</ci>
+                        </apply>
+                    </apply>
                 </apply>
             </apply>
             <apply>
@@ -112,87 +65,51 @@ Original paper: Schultz, S. G. (1980). Basic principles of membrane transport (V
                 <ci>I_D_P_Na</ci>
                 <apply>
                     <times/>
-                    <ci>J_D_P_Na</ci>
+                    <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
+                    <ci>G_P_Na</ci>
+                    <ci>A_Apical</ci>
+                    <apply>
+                        <minus/>
+                        <ci>v_ms</ci>
+                        <ci>V_P_Na</ci>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>J_D_P_Na</ci>
+                <apply>
+                    <divide/>
+                    <ci>I_D_P_Na</ci>
                     <ci>F</ci>
                 </apply>
             </apply>
             <apply>
                 <eq/>
-                <ci>J_D_P_K</ci>
+                <ci>V_P_K</ci>
                 <apply>
                     <times/>
                     <apply>
                         <divide/>
                         <apply>
                             <times/>
-                            <apply>
-                                <divide/>
-                                <apply>
-                                    <times/>
-                                    <apply>
-                                        <minus/>
-                                        <cn cellml:units="litre_umol_per_mol_per_m3" type="e-notation">1<sep/>9</cn>
-                                    </apply>
-                                    <ci>P_P_k</ci>
-                                    <ci>F</ci>
-                                    <ci>z_k</ci>
-                                    <ci>v_ms</ci>
-                                </apply>
-                                <apply>
-                                    <times/>
-                                    <ci>R</ci>
-                                    <ci>T</ci>
-                                </apply>
-                            </apply>
-                            <apply>
-                                <minus/>
-                                <ci>q_K_m</ci>
-                                <apply>
-                                    <times/>
-                                    <ci>q_K_s</ci>
-                                    <apply>
-                                        <exp/>
-                                        <apply>
-                                            <divide/>
-                                            <apply>
-                                                <times/>
-                                                <ci>z_k</ci>
-                                                <ci>F</ci>
-                                                <ci>v_ms</ci>
-                                            </apply>
-                                            <apply>
-                                                <times/>
-                                                <ci>R</ci>
-                                                <ci>T</ci>
-                                            </apply>
-                                        </apply>
-                                    </apply>
-                                </apply>
-                            </apply>
+                            <ci>R</ci>
+                            <ci>T</ci>
                         </apply>
                         <apply>
-                            <minus/>
-                            <cn cellml:units="dimensionless">1</cn>
-                            <apply>
-                                <exp/>
-                                <apply>
-                                    <divide/>
-                                    <apply>
-                                        <times/>
-                                        <ci>z_k</ci>
-                                        <ci>F</ci>
-                                        <ci>v_ms</ci>
-                                    </apply>
-                                    <apply>
-                                        <times/>
-                                        <ci>R</ci>
-                                        <ci>T</ci>
-                                    </apply>
-                                </apply>
-                            </apply>
+                            <times/>
+                            <ci>z_k</ci>
+                            <ci>F</ci>
                         </apply>
                     </apply>
-                    <ci>A_Apical</ci>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <divide/>
+                            <ci>K_s</ci>
+                            <ci>K_m</ci>
+                        </apply>
+                    </apply>
                 </apply>
             </apply>
             <apply>
@@ -200,87 +117,51 @@ Original paper: Schultz, S. G. (1980). Basic principles of membrane transport (V
                 <ci>I_D_P_K</ci>
                 <apply>
                     <times/>
-                    <ci>J_D_P_K</ci>
+                    <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
+                    <ci>G_P_K</ci>
+                    <ci>A_Apical</ci>
+                    <apply>
+                        <minus/>
+                        <ci>v_ms</ci>
+                        <ci>V_P_K</ci>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>J_D_P_K</ci>
+                <apply>
+                    <divide/>
+                    <ci>I_D_P_K</ci>
                     <ci>F</ci>
                 </apply>
             </apply>
             <apply>
                 <eq/>
-                <ci>J_D_P_Cl</ci>
+                <ci>V_P_Cl</ci>
                 <apply>
                     <times/>
                     <apply>
                         <divide/>
                         <apply>
                             <times/>
-                            <apply>
-                                <divide/>
-                                <apply>
-                                    <times/>
-                                    <apply>
-                                        <minus/>
-                                        <cn cellml:units="litre_umol_per_mol_per_m3" type="e-notation">1<sep/>9</cn>
-                                    </apply>
-                                    <ci>P_P_Cl</ci>
-                                    <ci>F</ci>
-                                    <ci>z_Cl</ci>
-                                    <ci>v_ms</ci>
-                                </apply>
-                                <apply>
-                                    <times/>
-                                    <ci>R</ci>
-                                    <ci>T</ci>
-                                </apply>
-                            </apply>
-                            <apply>
-                                <minus/>
-                                <ci>q_Cl_m</ci>
-                                <apply>
-                                    <times/>
-                                    <ci>q_Cl_s</ci>
-                                    <apply>
-                                        <exp/>
-                                        <apply>
-                                            <divide/>
-                                            <apply>
-                                                <times/>
-                                                <ci>z_Cl</ci>
-                                                <ci>F</ci>
-                                                <ci>v_ms</ci>
-                                            </apply>
-                                            <apply>
-                                                <times/>
-                                                <ci>R</ci>
-                                                <ci>T</ci>
-                                            </apply>
-                                        </apply>
-                                    </apply>
-                                </apply>
-                            </apply>
+                            <ci>R</ci>
+                            <ci>T</ci>
                         </apply>
                         <apply>
-                            <minus/>
-                            <cn cellml:units="dimensionless">1</cn>
-                            <apply>
-                                <exp/>
-                                <apply>
-                                    <divide/>
-                                    <apply>
-                                        <times/>
-                                        <ci>z_Cl</ci>
-                                        <ci>F</ci>
-                                        <ci>v_ms</ci>
-                                    </apply>
-                                    <apply>
-                                        <times/>
-                                        <ci>R</ci>
-                                        <ci>T</ci>
-                                    </apply>
-                                </apply>
-                            </apply>
+                            <times/>
+                            <ci>z_Cl</ci>
+                            <ci>F</ci>
                         </apply>
                     </apply>
-                    <ci>A_Apical</ci>
+                    <apply>
+                        <ln/>
+                        <apply>
+                            <divide/>
+                            <ci>Cl_s</ci>
+                            <ci>Cl_m</ci>
+                        </apply>
+                    </apply>
                 </apply>
             </apply>
             <apply>
@@ -288,8 +169,33 @@ Original paper: Schultz, S. G. (1980). Basic principles of membrane transport (V
                 <ci>I_D_P_Cl</ci>
                 <apply>
                     <times/>
-                    <ci>J_D_P_Cl</ci>
+                    <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
+                    <ci>G_P_Cl</ci>
+                    <ci>A_Apical</ci>
+                    <apply>
+                        <minus/>
+                        <ci>v_ms</ci>
+                        <ci>V_P_Cl</ci>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>J_D_P_Cl</ci>
+                <apply>
+                    <divide/>
+                    <ci>I_D_P_Cl</ci>
                     <ci>F</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>J_D_Paracellular</ci>
+                <apply>
+                    <plus/>
+                    <ci>J_D_P_Na</ci>
+                    <ci>J_D_P_K</ci>
+                    <ci>J_D_P_Cl</ci>
                 </apply>
             </apply>
         </math>
