@@ -72,7 +72,10 @@
                 <ci>I_BK</ci>
                 <apply>
                     <times/>
-                    <cn cellml:units="dimensionless" type="e-notation">1<sep/>+6</cn>
+                    <apply>
+                        <minus/>
+                        <cn cellml:units="dimensionless" type="e-notation">1<sep/>+6</cn>
+                    </apply>
                     <ci>G_BK</ci>
                     <ci>P_BK</ci>
                     <ci>A_Apical</ci>

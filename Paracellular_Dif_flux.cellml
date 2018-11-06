@@ -65,7 +65,10 @@
                 <ci>I_D_P_Na</ci>
                 <apply>
                     <times/>
-                    <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
+                    <apply>
+                        <minus/>
+                        <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
+                    </apply>
                     <ci>G_P_Na</ci>
                     <ci>A_Apical</ci>
                     <apply>
@@ -117,7 +120,10 @@
                 <ci>I_D_P_K</ci>
                 <apply>
                     <times/>
-                    <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
+                    <apply>
+                        <minus/>
+                        <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
+                    </apply>
                     <ci>G_P_K</ci>
                     <ci>A_Apical</ci>
                     <apply>
@@ -169,7 +175,10 @@
                 <ci>I_D_P_Cl</ci>
                 <apply>
                     <times/>
-                    <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
+                    <apply>
+                        <minus/>
+                        <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
+                    </apply>
                     <ci>G_P_Cl</ci>
                     <ci>A_Apical</ci>
                     <apply>

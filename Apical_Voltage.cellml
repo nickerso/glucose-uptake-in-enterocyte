@@ -30,31 +30,22 @@
                         <times/>
                         <cn cellml:units="dimensionless">1</cn>
                         <apply>
-                            <minus/>
+                            <plus/>
                             <apply>
-                                <minus/>
-                                <apply>
-                                    <minus/>
-                                    <apply>
-                                        <minus/>
-                                        <apply>
-                                            <times/>
-                                            <cn cellml:units="dimensionless">1</cn>
-                                            <ci>I_Na_SGLT</ci>
-                                        </apply>
-                                        <ci>I_BK</ci>
-                                    </apply>
-                                    <apply>
-                                        <times/>
-                                        <cn cellml:units="dimensionless">1</cn>
-                                        <ci>I_CFTR</ci>
-                                    </apply>
-                                </apply>
-                                <apply>
-                                    <times/>
-                                    <cn cellml:units="dimensionless">1</cn>
-                                    <ci>I_ENaC</ci>
-                                </apply>
+                                <times/>
+                                <cn cellml:units="dimensionless">1</cn>
+                                <ci>I_Na_SGLT</ci>
+                            </apply>
+                            <ci>I_BK</ci>
+                            <apply>
+                                <times/>
+                                <cn cellml:units="dimensionless">1</cn>
+                                <ci>I_CFTR</ci>
+                            </apply>
+                            <apply>
+                                <times/>
+                                <cn cellml:units="dimensionless">1</cn>
+                                <ci>I_ENaC</ci>
                             </apply>
                             <apply>
                                 <times/>

@@ -35,11 +35,11 @@
     <import xlink:href="Apical_Concentration.cellml">
         <component component_ref="Apical_concentrations" name="Apical_concentrations"/>
     </import>
-    <import xlink:href="Rate_Constants.cellml">
-        <component component_ref="rate_constants" name="rate_constants"/>
+    <import xlink:href="SGLT1_Rate_Constants.cellml">
+        <component component_ref="SGLT1_rate_constants" name="SGLT1_rate_constants"/>
     </import>
-    <import xlink:href="Phenomonological_Constants.cellml">
-        <component component_ref="phenomonological_constants" name="phenomonological_constants"/>
+    <import xlink:href="SGLT1_flux.cellml">
+        <component component_ref="SGLT1" name="SGLT1"/>
     </import>
     <import xlink:href="Apical_Voltage.cellml">
         <component component_ref="Apical_voltage" name="Apical_voltage"/>
@@ -77,8 +77,8 @@
     <import xlink:href="BK_flux.cellml">
         <component component_ref="BK" name="BK"/>
     </import>
-    <import xlink:href="IK_flux.cellml">
-        <component component_ref="IK" name="IK"/>
+    <import xlink:href="KCNQ_flux.cellml">
+        <component component_ref="KCNQ" name="KCNQ"/>
     </import>
     <import xlink:href="AE1_flux.cellml">
         <component component_ref="AE1" name="AE1"/>
@@ -98,6 +98,9 @@
     <import xlink:href="CFTR_flux.cellml">
         <component component_ref="CFTR" name="CFTR"/>
     </import>
+    <import xlink:href="CLC2_flux.cellml">
+        <component component_ref="CLC2" name="CLC2"/>
+    </import>
     <!--    def import using "interstitium_flux.cellml" for
         comp interstitium_concentration using comp interstitium_concentration;
     enddef;-->
@@ -113,8 +116,8 @@
         <component_ref component="Enterocyte">
             <component_ref component="parameters"/>
             <component_ref component="Apical_concentrations"/>
-            <component_ref component="rate_constants"/>
-            <component_ref component="phenomonological_constants"/>
+            <component_ref component="SGLT1_rate_constants"/>
+            <component_ref component="SGLT1"/>
             <component_ref component="Apical_voltage"/>
             <component_ref component="Cell_concentration"/>
             <component_ref component="GLUT2"/>
@@ -124,13 +127,14 @@
             <component_ref component="Paracellular_Diffusion"/>
             <component_ref component="Paracellular_voltage"/>
             <component_ref component="BK"/>
-            <component_ref component="IK"/>
+            <component_ref component="KCNQ"/>
             <component_ref component="AE1"/>
             <component_ref component="NHE3"/>
             <component_ref component="NBC"/>
             <component_ref component="NaKCC"/>
             <component_ref component="ENaC"/>
             <component_ref component="CFTR"/>
+            <component_ref component="CLC2"/>
             <!--            comp interstitium_concentration;
             comp Blood_concentration;-->
         </component_ref>
@@ -171,7 +175,7 @@
         vars time and time;
     enddef;-->
     <connection>
-        <map_components component_1="rate_constants" component_2="phenomonological_constants"/>
+        <map_components component_1="SGLT1_rate_constants" component_2="SGLT1"/>
         <map_variables variable_1="ks_12" variable_2="ks_12"/>
         <map_variables variable_1="k_12" variable_2="k_12"/>
         <map_variables variable_1="k_21" variable_2="k_21"/>
@@ -189,37 +193,37 @@
         <map_variables variable_1="k_16" variable_2="k_16"/>
     </connection>
     <connection>
-        <map_components component_1="phenomonological_constants" component_2="Apical_concentrations"/>
+        <map_components component_1="SGLT1" component_2="Apical_concentrations"/>
         <map_variables variable_1="Na_m" variable_2="Na_m"/>
         <map_variables variable_1="glucose_m" variable_2="glucose_m"/>
     </connection>
     <connection>
-        <map_components component_1="phenomonological_constants" component_2="Cell_concentration"/>
+        <map_components component_1="SGLT1" component_2="Cell_concentration"/>
         <map_variables variable_1="J_Na_SGLT" variable_2="J_Na_SGLT"/>
         <map_variables variable_1="J_Gl_SGLT" variable_2="J_Gl_SGLT"/>
     </connection>
     <connection>
-        <map_components component_1="phenomonological_constants" component_2="parameters"/>
+        <map_components component_1="SGLT1" component_2="parameters"/>
         <map_variables variable_1="k0_23" variable_2="k0_23"/>
         <map_variables variable_1="F" variable_2="F"/>
     </connection>
     <connection>
-        <map_components component_1="phenomonological_constants" component_2="Apical_voltage"/>
+        <map_components component_1="SGLT1" component_2="Apical_voltage"/>
         <map_variables variable_1="I_Na_SGLT" variable_2="I_Na_SGLT"/>
         <!--vars I_Gl_SGLT and I_Gl_SGLT;-->
     </connection>
     <connection>
-        <map_components component_1="rate_constants" component_2="Apical_concentrations"/>
+        <map_components component_1="SGLT1_rate_constants" component_2="Apical_concentrations"/>
         <map_variables variable_1="Na_m" variable_2="Na_m"/>
         <map_variables variable_1="glucose_m" variable_2="glucose_m"/>
     </connection>
     <connection>
-        <map_components component_1="rate_constants" component_2="Cell_concentration"/>
+        <map_components component_1="SGLT1_rate_constants" component_2="Cell_concentration"/>
         <map_variables variable_1="Na_i" variable_2="Na_i"/>
         <map_variables variable_1="glucose_i" variable_2="glucose_i"/>
     </connection>
     <connection>
-        <map_components component_1="rate_constants" component_2="parameters"/>
+        <map_components component_1="SGLT1_rate_constants" component_2="parameters"/>
         <map_variables variable_1="k0_12" variable_2="k0_12"/>
         <map_variables variable_1="k0_21" variable_2="k0_21"/>
         <!--vars k0_23 and k0_23;-->
@@ -456,7 +460,7 @@
         <map_variables variable_1="I_BK" variable_2="I_BK"/>
     </connection>
     <connection>
-        <map_components component_1="IK" component_2="parameters"/>
+        <map_components component_1="KCNQ" component_2="parameters"/>
         <map_variables variable_1="F" variable_2="F"/>
         <map_variables variable_1="z_k" variable_2="z_k"/>
         <map_variables variable_1="R" variable_2="R"/>
@@ -464,19 +468,19 @@
         <map_variables variable_1="A_Apical" variable_2="A_Apical"/>
     </connection>
     <connection>
-        <map_components component_1="IK" component_2="Cell_concentration"/>
+        <map_components component_1="KCNQ" component_2="Cell_concentration"/>
         <map_variables variable_1="K_i" variable_2="K_i"/>
         <map_variables variable_1="Ca_i" variable_2="Ca_i"/>
-        <map_variables variable_1="J_IK" variable_2="J_IK"/>
+        <map_variables variable_1="J_KCNQ" variable_2="J_KCNQ"/>
     </connection>
     <connection>
-        <map_components component_1="IK" component_2="Basolateral_concentrations"/>
+        <map_components component_1="KCNQ" component_2="Basolateral_concentrations"/>
         <map_variables variable_1="K_s" variable_2="K_s"/>
     </connection>
     <connection>
-        <map_components component_1="IK" component_2="Basol_voltage"/>
+        <map_components component_1="KCNQ" component_2="Basol_voltage"/>
         <map_variables variable_1="v_sc" variable_2="v_sc"/>
-        <map_variables variable_1="I_IK" variable_2="I_IK"/>
+        <map_variables variable_1="I_KCNQ" variable_2="I_KCNQ"/>
     </connection>
     <connection>
         <map_components component_1="parameters" component_2="AE1"/>
@@ -613,6 +617,28 @@
         <map_variables variable_1="v_mc" variable_2="v_mc"/>
         <map_variables variable_1="I_CFTR" variable_2="I_CFTR"/>
         <!--vars I_CFTR_HCO3 and I_CFTR_HCO3;-->
+    </connection>
+    <connection>
+        <map_components component_1="CLC2" component_2="parameters"/>
+        <map_variables variable_1="F" variable_2="F"/>
+        <map_variables variable_1="z_Cl" variable_2="z_Cl"/>
+        <map_variables variable_1="R" variable_2="R"/>
+        <map_variables variable_1="T" variable_2="T"/>
+        <map_variables variable_1="A_Apical" variable_2="A_Apical"/>
+    </connection>
+    <connection>
+        <map_components component_1="CLC2" component_2="Cell_concentration"/>
+        <map_variables variable_1="Cl_i" variable_2="Cl_i"/>
+        <map_variables variable_1="J_CLC2" variable_2="J_CLC2"/>
+    </connection>
+    <connection>
+        <map_components component_1="CLC2" component_2="Basolateral_concentrations"/>
+        <map_variables variable_1="Cl_s" variable_2="Cl_s"/>
+    </connection>
+    <connection>
+        <map_components component_1="CLC2" component_2="Basol_voltage"/>
+        <map_variables variable_1="v_sc" variable_2="v_sc"/>
+        <map_variables variable_1="I_CLC2" variable_2="I_CLC2"/>
     </connection>
     <connection>
         <map_components component_1="Basolateral_concentrations" component_2="GLUT2"/>

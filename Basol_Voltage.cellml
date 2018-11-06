@@ -14,7 +14,8 @@
         <variable name="I_D_P_Cl" public_interface="in" units="uA"/>
         <variable name="I_NBC_Na" public_interface="in" units="uA"/>
         <variable name="I_NBC_HCO3" public_interface="in" units="uA"/>
-        <variable name="I_IK" public_interface="in" units="uA"/>
+        <variable name="I_KCNQ" public_interface="in" units="uA"/>
+        <variable name="I_CLC2" public_interface="in" units="uA"/>
         <!--var I_GLUT: uA {pub: in};-->
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -32,15 +33,16 @@
                         <times/>
                         <cn cellml:units="dimensionless">1</cn>
                         <apply>
-                            <minus/>
+                            <plus/>
                             <apply>
-                                <plus/>
+                                <minus/>
                                 <apply>
                                     <minus/>
                                     <apply>
                                         <plus/>
                                         <apply>
                                             <minus/>
+                                            <ci>I_CLC2</ci>
                                             <ci>I_Na_NaK</ci>
                                         </apply>
                                         <ci>I_K_NaK</ci>
@@ -59,23 +61,18 @@
                                 <apply>
                                     <times/>
                                     <cn cellml:units="dimensionless">1</cn>
-                                    <ci>I_D_P_Na</ci>
-                                </apply>
-                                <apply>
-                                    <times/>
-                                    <cn cellml:units="dimensionless">1</cn>
-                                    <ci>I_D_P_K</ci>
-                                </apply>
-                                <apply>
-                                    <times/>
-                                    <cn cellml:units="dimensionless">1</cn>
-                                    <ci>I_D_P_Cl</ci>
+                                    <apply>
+                                        <plus/>
+                                        <ci>I_D_P_Na</ci>
+                                        <ci>I_D_P_K</ci>
+                                        <ci>I_D_P_Cl</ci>
+                                    </apply>
                                 </apply>
                             </apply>
                             <apply>
                                 <times/>
                                 <cn cellml:units="dimensionless">1</cn>
-                                <ci>I_IK</ci>
+                                <ci>I_KCNQ</ci>
                             </apply>
                         </apply>
                     </apply>

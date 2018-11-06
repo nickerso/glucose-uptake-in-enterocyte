@@ -13,7 +13,7 @@
         <variable name="I_ENaC" public_interface="out" units="uA"/>
         <variable name="A_Apical" public_interface="in" units="m2"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
-        <variable initial_value="1.6" name="G_ENaC" public_interface="out" units="S_per_m2"/>
+        <variable initial_value="2" name="G_ENaC" public_interface="out" units="S_per_m2"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -66,7 +66,10 @@
                 <ci>I_ENaC</ci>
                 <apply>
                     <times/>
-                    <cn cellml:units="dimensionless" type="e-notation">1<sep/>+6</cn>
+                    <apply>
+                        <minus/>
+                        <cn cellml:units="dimensionless" type="e-notation">1<sep/>+6</cn>
+                    </apply>
                     <ci>G_ENaC</ci>
                     <ci>A_Apical</ci>
                     <apply>

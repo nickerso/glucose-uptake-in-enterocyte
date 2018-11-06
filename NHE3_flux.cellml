@@ -37,15 +37,6 @@
         <variable name="gamma_ext_NH4" units="dimensionless"/>
         <variable name="gamma_int_NH4" units="dimensionless"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
-        <!--        var pH_Ext: dimensionless;
-        var pH_int: dimensionless;
-        var p_K: dimensionless {init: 6.1, pub: out};
-        var P_CO2: dimensionless {init: 40, pub: out};
-        var s: dimensionless {init: 0.03e-3, pub: out};
-        var HCO3_i: M {pub: in};
-        var HCO3_m: M {pub: in};-->
-        <!--        pH_Ext = p_K+log(HCO3_m/(s*P_CO2));
-        pH_int = p_K+log(HCO3_i/(s*P_CO2));-->
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -260,7 +251,10 @@
                         <divide/>
                         <apply>
                             <times/>
-                            <cn cellml:units="dimensionless" type="e-notation">1<sep/>9</cn>
+                            <apply>
+                                <minus/>
+                                <cn cellml:units="dimensionless" type="e-notation">1<sep/>9</cn>
+                            </apply>
                             <ci>v_cell</ci>
                             <ci>x_T</ci>
                         </apply>
@@ -316,7 +310,10 @@
                         <divide/>
                         <apply>
                             <times/>
-                            <cn cellml:units="dimensionless" type="e-notation">1<sep/>9</cn>
+                            <apply>
+                                <minus/>
+                                <cn cellml:units="dimensionless" type="e-notation">1<sep/>9</cn>
+                            </apply>
                             <ci>v_cell</ci>
                             <ci>x_T</ci>
                         </apply>

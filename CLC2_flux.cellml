@@ -1,25 +1,25 @@
 <?xml version='1.0'?>
-<model name="CFTR_flux" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
-    <component name="CFTR">
+<model name="CLC2_flux" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <component name="CLC2">
         <variable name="z_Cl" public_interface="in" units="dimensionless"/>
         <variable name="R" public_interface="in" units="J_per_K_per_mol"/>
         <variable name="T" public_interface="in" units="kelvin"/>
         <variable name="Cl_i" public_interface="in" units="M"/>
-        <variable name="Cl_m" public_interface="in" units="M"/>
+        <variable name="Cl_s" public_interface="in" units="M"/>
         <variable name="V_A_Cl" public_interface="out" units="volt"/>
-        <variable name="v_mc" public_interface="in" units="volt"/>
-        <variable name="J_CFTR" public_interface="out" units="umol_per_s"/>
-        <variable name="I_CFTR" public_interface="out" units="uA"/>
+        <variable name="v_sc" public_interface="in" units="volt"/>
+        <variable name="J_CLC2" public_interface="out" units="umol_per_s"/>
+        <variable name="I_CLC2" public_interface="out" units="uA"/>
         <variable name="A_Apical" public_interface="in" units="m2"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
-        <variable initial_value="1" name="G_CFTR" public_interface="out" units="S_per_m2"/>
+        <variable initial_value="1" name="G_CLC2" public_interface="out" units="S_per_m2"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
-                <ci>J_CFTR</ci>
+                <ci>J_CLC2</ci>
                 <apply>
                     <divide/>
-                    <ci>I_CFTR</ci>
+                    <ci>I_CLC2</ci>
                     <ci>F</ci>
                 </apply>
             </apply>
@@ -45,7 +45,7 @@
                         <ln/>
                         <apply>
                             <divide/>
-                            <ci>Cl_m</ci>
+                            <ci>Cl_s</ci>
                             <ci>Cl_i</ci>
                         </apply>
                     </apply>
@@ -53,18 +53,18 @@
             </apply>
             <apply>
                 <eq/>
-                <ci>I_CFTR</ci>
+                <ci>I_CLC2</ci>
                 <apply>
                     <times/>
                     <apply>
                         <minus/>
                         <cn cellml:units="dimensionless" type="e-notation">1<sep/>6</cn>
                     </apply>
-                    <ci>G_CFTR</ci>
+                    <ci>G_CLC2</ci>
                     <ci>A_Apical</ci>
                     <apply>
                         <minus/>
-                        <ci>v_mc</ci>
+                        <ci>v_sc</ci>
                         <ci>V_A_Cl</ci>
                     </apply>
                 </apply>
