@@ -28,9 +28,9 @@
         <variable name="V_P_Na" public_interface="out" units="volt"/>
         <variable name="V_P_K" public_interface="out" units="volt"/>
         <variable name="V_P_Cl" public_interface="out" units="volt"/>
-        <variable initial_value="10" name="G_P_Na" public_interface="out" units="S_per_m2"/>
+        <variable initial_value="5" name="G_P_Na" public_interface="out" units="S_per_m2"/>
         <variable initial_value="3" name="G_P_K" public_interface="out" units="S_per_m2"/>
-        <variable initial_value="10" name="G_P_Cl" public_interface="out" units="S_per_m2"/>
+        <variable initial_value="5" name="G_P_Cl" public_interface="out" units="S_per_m2"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -54,8 +54,8 @@
                         <ln/>
                         <apply>
                             <divide/>
-                            <ci>Na_s</ci>
                             <ci>Na_m</ci>
+                            <ci>Na_s</ci>
                         </apply>
                     </apply>
                 </apply>
@@ -109,8 +109,8 @@
                         <ln/>
                         <apply>
                             <divide/>
-                            <ci>K_s</ci>
                             <ci>K_m</ci>
+                            <ci>K_s</ci>
                         </apply>
                     </apply>
                 </apply>
@@ -164,8 +164,8 @@
                         <ln/>
                         <apply>
                             <divide/>
-                            <ci>Cl_s</ci>
                             <ci>Cl_m</ci>
+                            <ci>Cl_s</ci>
                         </apply>
                     </apply>
                 </apply>

@@ -17,6 +17,8 @@
         <variable name="P_BK" public_interface="out" units="dimensionless"/>
         <variable initial_value="0.0003" name="K_s_BK" public_interface="out" units="M"/>
         <variable initial_value="1.7" name="eta" public_interface="out" units="dimensionless"/>
+        <!-- alpha is not multipled by area in order to have a dimensionless unit, so the unit is actually 1/m2, it's necessary to the same for CFTR as well-->
+        <!--var alpha_BK: per_m2 {init: 0.1, pub: out};-->
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>

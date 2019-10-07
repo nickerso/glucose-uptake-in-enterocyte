@@ -1,6 +1,7 @@
 <?xml version='1.0'?>
 <model name="Parameters" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <component name="parameters">
+        <!--var time: second {pub: out};-->
         <variable initial_value="-1" name="z_Cl" public_interface="out" units="dimensionless"/>
         <variable initial_value="1" name="z_Na" public_interface="out" units="dimensionless"/>
         <variable initial_value="1" name="z_k" public_interface="out" units="dimensionless"/>

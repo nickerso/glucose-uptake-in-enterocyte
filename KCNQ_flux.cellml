@@ -16,12 +16,9 @@
         <variable name="A_Apical" public_interface="in" units="m2"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
         <variable initial_value="1.7" name="G_KCNQ" public_interface="out" units="S_per_m2"/>
-        <!--var P_KCNQ: dimensionless {pub: out};-->
+        <!--var P_IK: dimensionless {pub: out};-->
         <variable initial_value="0.0003" name="K_s_KCNQ" public_interface="out" units="M"/>
         <variable initial_value="1.7" name="eta" public_interface="out" units="dimensionless"/>
-        <!-- alpha is not multipled by area in order to have a dimensionless unit, so the unit is actually 1/m2, it's necessary to the same for CFTR as well-->
-        <!--var alpha_KCNQ: per_m2 {init: 1, pub: out};-->
-        <!--P_KCNQ = 1{dimensionless}/(1{dimensionless}+pow(K_s_KCNQ/Ca_i, eta));-->
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>

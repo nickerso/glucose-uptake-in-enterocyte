@@ -13,6 +13,8 @@
         <variable name="A_Apical" public_interface="in" units="m2"/>
         <variable name="F" public_interface="in" units="C_per_mol"/>
         <variable initial_value="1" name="G_CLC2" public_interface="out" units="S_per_m2"/>
+        <!-- alpha is multipled by area in order to have a dimensionless unit-->
+        <!--var alpha_CFTR: per_m2 {init: 0.1, pub: out};-->
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
