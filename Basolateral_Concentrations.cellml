@@ -5,6 +5,151 @@
         <variable initial_value="0.005" name="glucose_s" public_interface="out" units="M"/>
         <variable initial_value="0.119" name="Cl_s" public_interface="out" units="M"/>
         <variable initial_value="0.0054" name="K_s" public_interface="out" units="M"/>
+        <variable name="v_cell" public_interface="in" units="m3"/>
+        <variable name="time" public_interface="in" units="second"/>
+        <variable name="J_GLUT" public_interface="in" units="umol_per_s"/>
+        <variable name="J_Na_NaK" public_interface="in" units="umol_per_s"/>
+        <variable name="J_NaKCC" public_interface="in" units="umol_per_s"/>
+        <variable name="J_NBC_Na" public_interface="in" units="umol_per_s"/>
+        <variable name="J_D_P_Na" public_interface="in" units="umol_per_s"/>
+        <variable name="J_D_P_K" public_interface="in" units="umol_per_s"/>
+        <variable name="J_KCNQ" public_interface="in" units="umol_per_s"/>
+        <variable name="J_K_NaK" public_interface="in" units="umol_per_s"/>
+        <variable name="J_D_P_Cl" public_interface="in" units="umol_per_s"/>
+        <variable name="J_CLC2" public_interface="in" units="umol_per_s"/>
+        <variable name="v_b" public_interface="out" units="m3"/>
+        <variable initial_value="1" name="m" public_interface="out" units="dimensionless"/>
+        <variable initial_value="0" name="theta" public_interface="out" units="dimensionless"/>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <ci>v_b</ci>
+                <apply>
+                    <times/>
+                    <ci>m</ci>
+                    <ci>v_cell</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>time</ci>
+                    </bvar>
+                    <ci>Cl_s</ci>
+                </apply>
+                <apply>
+                    <divide/>
+                    <apply>
+                        <times/>
+                        <ci>theta</ci>
+                        <cn cellml:units="mole_per_umol" type="e-notation">1<sep/>-9</cn>
+                        <apply>
+                            <plus/>
+                            <apply>
+                                <minus/>
+                                <ci>J_CLC2</ci>
+                                <apply>
+                                    <times/>
+                                    <cn cellml:units="dimensionless">2</cn>
+                                    <ci>J_NaKCC</ci>
+                                </apply>
+                            </apply>
+                            <ci>J_D_P_Cl</ci>
+                        </apply>
+                    </apply>
+                    <ci>v_b</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>time</ci>
+                    </bvar>
+                    <ci>K_s</ci>
+                </apply>
+                <apply>
+                    <divide/>
+                    <apply>
+                        <times/>
+                        <ci>theta</ci>
+                        <cn cellml:units="mole_per_umol" type="e-notation">1<sep/>-9</cn>
+                        <apply>
+                            <minus/>
+                            <apply>
+                                <minus/>
+                                <apply>
+                                    <minus/>
+                                    <apply>
+                                        <minus/>
+                                        <ci>J_K_NaK</ci>
+                                    </apply>
+                                    <ci>J_NaKCC</ci>
+                                </apply>
+                                <ci>J_KCNQ</ci>
+                            </apply>
+                            <ci>J_D_P_K</ci>
+                        </apply>
+                    </apply>
+                    <ci>v_b</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>time</ci>
+                    </bvar>
+                    <ci>Na_s</ci>
+                </apply>
+                <apply>
+                    <divide/>
+                    <apply>
+                        <times/>
+                        <ci>theta</ci>
+                        <cn cellml:units="mole_per_umol" type="e-notation">1<sep/>-9</cn>
+                        <apply>
+                            <minus/>
+                            <apply>
+                                <minus/>
+                                <apply>
+                                    <minus/>
+                                    <ci>J_Na_NaK</ci>
+                                    <ci>J_NaKCC</ci>
+                                </apply>
+                                <ci>J_NBC_Na</ci>
+                            </apply>
+                            <ci>J_D_P_Na</ci>
+                        </apply>
+                    </apply>
+                    <ci>v_b</ci>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>time</ci>
+                    </bvar>
+                    <ci>glucose_s</ci>
+                </apply>
+                <apply>
+                    <divide/>
+                    <apply>
+                        <times/>
+                        <ci>theta</ci>
+                        <cn cellml:units="mole_per_umol" type="e-notation">1<sep/>-9</cn>
+                        <ci>J_GLUT</ci>
+                    </apply>
+                    <ci>v_b</ci>
+                </apply>
+            </apply>
+        </math>
     </component>
     <!-- Your code goes here-->
 </model>

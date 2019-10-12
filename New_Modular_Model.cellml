@@ -327,6 +327,8 @@
     <connection>
         <map_components component_1="NaK_channel" component_2="Basolateral_concentrations"/>
         <map_variables variable_1="K_s" variable_2="K_s"/>
+        <map_variables variable_1="J_Na_NaK" variable_2="J_Na_NaK"/>
+        <map_variables variable_1="J_K_NaK" variable_2="J_K_NaK"/>
     </connection>
     <connection>
         <map_components component_1="NaK_channel" component_2="Cell_concentration"/>
@@ -402,6 +404,9 @@
         <map_variables variable_1="Na_s" variable_2="Na_s"/>
         <map_variables variable_1="K_s" variable_2="K_s"/>
         <map_variables variable_1="Cl_s" variable_2="Cl_s"/>
+        <map_variables variable_1="J_D_P_Na" variable_2="J_D_P_Na"/>
+        <map_variables variable_1="J_D_P_K" variable_2="J_D_P_K"/>
+        <map_variables variable_1="J_D_P_Cl" variable_2="J_D_P_Cl"/>
         <!--vars F and F;-->
     </connection>
     <!--    def map between Cell_concentration and Basolateral_Diffusion for
@@ -476,6 +481,7 @@
     <connection>
         <map_components component_1="KCNQ" component_2="Basolateral_concentrations"/>
         <map_variables variable_1="K_s" variable_2="K_s"/>
+        <map_variables variable_1="J_KCNQ" variable_2="J_KCNQ"/>
     </connection>
     <connection>
         <map_components component_1="KCNQ" component_2="Basol_voltage"/>
@@ -560,6 +566,7 @@
     <connection>
         <map_components component_1="Basolateral_concentrations" component_2="NBC"/>
         <map_variables variable_1="Na_s" variable_2="Na_s"/>
+        <map_variables variable_1="J_NBC_Na" variable_2="J_NBC_Na"/>
     </connection>
     <connection>
         <map_components component_1="NaKCC" component_2="Cell_concentration"/>
@@ -634,6 +641,7 @@
     <connection>
         <map_components component_1="CLC2" component_2="Basolateral_concentrations"/>
         <map_variables variable_1="Cl_s" variable_2="Cl_s"/>
+        <map_variables variable_1="J_CLC2" variable_2="J_CLC2"/>
     </connection>
     <connection>
         <map_components component_1="CLC2" component_2="Basol_voltage"/>
@@ -643,16 +651,22 @@
     <connection>
         <map_components component_1="Basolateral_concentrations" component_2="GLUT2"/>
         <map_variables variable_1="glucose_s" variable_2="glucose_s"/>
+        <map_variables variable_1="J_GLUT" variable_2="J_GLUT"/>
         <!--vars J_GLUT and J_GLUT;-->
     </connection>
-    <!--    def map between interstitium_concentration and parameters for
-        //vars time and time;-->
-    <!--        vars v_cell and v_cell;
-    enddef;-->
+    <connection>
+        <map_components component_1="Basolateral_concentrations" component_2="parameters"/>
+        <!--vars time and time;-->
+        <map_variables variable_1="v_cell" variable_2="v_cell"/>
+    </connection>
     <connection>
         <map_components component_1="Basolateral_concentrations" component_2="Enterocyte"/>
-        <!--vars time and time;-->
+        <map_variables variable_1="time" variable_2="time"/>
         <map_variables variable_1="glucose_s" variable_2="glucose_s"/>
+    </connection>
+    <connection>
+        <map_components component_1="Basolateral_concentrations" component_2="NaKCC"/>
+        <map_variables variable_1="J_NaKCC" variable_2="J_NaKCC"/>
     </connection>
     <!--    def map between interstitium_concentration and Blood_concentration for
         //vars J_G_Blood and J_G_Blood;-->
