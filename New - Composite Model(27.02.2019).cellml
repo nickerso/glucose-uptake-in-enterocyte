@@ -1,4 +1,4 @@
-<?xml version='1.0'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <model name="Nima_2018" xmlns="http://www.cellml.org/cellml/1.0#" xmlns:cellml="http://www.cellml.org/cellml/1.0#">
     <!-- Unit and value for K_s (GLUT2) is fixed
  NHE3 and NBC were fixed also sign of J_NHE3 changed from + to -  
