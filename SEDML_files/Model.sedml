@@ -20,7 +20,7 @@
         </uniformTimeCourse>
     </listOfSimulations>
     <listOfModels>
-        <model id="model" language="urn:sedml:language:cellml.1_0" source="New - Composite Model(27.02.2019)(different volume).cellml"/>
+        <model id="model" language="urn:sedml:language:cellml.1_0" source="Model.cellml"/>
     </listOfModels>
     <listOfTasks>
         <repeatedTask id="repeatedTask" range="once" resetModel="true">
