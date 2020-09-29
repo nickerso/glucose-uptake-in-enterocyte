@@ -17,7 +17,7 @@ glucose_m = [0.0, 0.005, 0.01, 0.025, 0.04, 0.05]
 #Glucose flux through SGLT
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 
@@ -54,7 +54,7 @@ outfile.close()
 #Glucose flux through GLUT
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 

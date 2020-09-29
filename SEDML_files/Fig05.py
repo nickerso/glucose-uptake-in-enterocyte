@@ -17,7 +17,7 @@ glucose_m = [0.0, 0.005, 0.01, 0.025, 0.04, 0.05]
 #Caco2-600 with apical GLUT2
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 
@@ -52,7 +52,7 @@ outfile.close()
 
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 # data.constants()["Basolateral_concentrations/theta"] = 1
@@ -85,7 +85,7 @@ outfile.close()
 
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 # data.constants()["Basolateral_concentrations/theta"] = 1
@@ -119,7 +119,7 @@ outfile.close()
 
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 # data.constants()["Basolateral_concentrations/theta"] = 1
@@ -154,7 +154,7 @@ outfile.close()
 #Caco2-600 without apical GLUT2
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 
@@ -191,7 +191,7 @@ outfile.close()
 
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 
@@ -229,7 +229,7 @@ outfile.close()
 
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 
@@ -267,7 +267,7 @@ outfile.close()
 
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 
@@ -308,7 +308,7 @@ outfile.close()
 
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 
@@ -346,7 +346,7 @@ outfile.close()
 
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 # data.constants()["Basolateral_concentrations/theta"] = 1
@@ -383,7 +383,7 @@ outfile.close()
 
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 # data.constants()["Basolateral_concentrations/theta"] = 1
@@ -419,7 +419,7 @@ outfile.close()
 
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 # data.constants()["Basolateral_concentrations/theta"] = 1
@@ -458,7 +458,7 @@ outfile.close()
 #Caco2-600 without apical GLUT2, n_SGLT*3
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 
@@ -496,7 +496,7 @@ outfile.close()
 
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 
@@ -535,7 +535,7 @@ outfile.close()
 
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 
@@ -574,7 +574,7 @@ outfile.close()
 
 glucose_i = {}
 
-simulation = opencor.open_simulation("test.sedml")
+simulation = opencor.open_simulation("https://models.physiomeproject.org/workspace/572/rawfile/59488c15178b09bcb5b11f795383b1435f7b7ef1/SEDML_files/Model.sedml")
 data = simulation.data()
 data.set_ending_point(600)
 
