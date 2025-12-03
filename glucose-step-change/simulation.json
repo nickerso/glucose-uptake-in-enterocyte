@@ -80,7 +80,7 @@
         "value": "initial_glucose"
       },
       {
-        "name": "Apical_concentrations/glucose_final",
+        "name": "Apical_concentrations/glucose_f",
         "value": "final_glucose"
       },
       {
