@@ -2564,7 +2564,7 @@ var F: C_per_mol {pub: in};-->
                 <apply>
                     <divide/>
                     <ci>n_GLUT</ci>
-                    <cn cellml:units="per_umole" type="e-notation">6.022<sep/>17</cn>
+                    <cn cellml:units="per_umol" type="e-notation">6.022<sep/>17</cn>
                 </apply>
             </apply>
             <apply>
@@ -2714,7 +2714,7 @@ var F: C_per_mol {pub: in};-->
                 <apply>
                     <divide/>
                     <ci>n_GLUT</ci>
-                    <cn cellml:units="per_umole" type="e-notation">6.022<sep/>17</cn>
+                    <cn cellml:units="per_umol" type="e-notation">6.022<sep/>17</cn>
                 </apply>
             </apply>
             <apply>
@@ -5476,7 +5476,7 @@ J_AE1_Cl1 = -J_AE1_HCO31;-->
         <map_variables variable_1="J_D_Cl" variable_2="J_D_Cl"/>
     </connection>
     <connection>
-        <map_components component_1="Apical_concentrations" component_2="Cell_concentration"/>
+        <map_components component_1="Apical_concentrations" component_2="parameters"/>
         <map_variables variable_1="time" variable_2="time"/>
     </connection>
     <connection>
