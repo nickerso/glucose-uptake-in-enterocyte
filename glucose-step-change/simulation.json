@@ -8,10 +8,10 @@
         "name": "Step time (s)"
       },
       {
-        "defaultValue": 1,
+        "defaultValue": 0.1,
         "id": "initial_glucose",
         "maximumValue": 30,
-        "minimumValue": 0.2,
+        "minimumValue": 0.1,
         "stepValue": 0.1,
         "name": "Initial mucosal glucose (mM)"
       },
@@ -19,7 +19,7 @@
         "defaultValue": 1,
         "id": "final_glucose",
         "maximumValue": 30,
-        "minimumValue": 0.2,
+        "minimumValue": 0.1,
         "stepValue": 0.1,
         "name": "Final mucosal glucose (mM)"
       }
@@ -77,11 +77,11 @@
     "parameters": [
       {
         "name": "Apical_concentrations/glucose_initial",
-        "value": "initial_glucose"
+        "value": "initial_glucose / 1000.0"
       },
       {
         "name": "Apical_concentrations/glucose_f",
-        "value": "final_glucose"
+        "value": "final_glucose / 1000.0"
       },
       {
         "name": "Apical_concentrations/glucose_step",
