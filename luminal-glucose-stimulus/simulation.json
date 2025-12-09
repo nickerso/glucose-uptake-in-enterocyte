@@ -1,0 +1,122 @@
+{
+    "input": [
+      {
+        "id": "stimulus_protocol",
+        "name": "Stimulus protocol",
+        "defaultValue": 1,
+        "possibleValues": [
+          {
+            "name": "Step change in glucose",
+            "value": 1
+          },
+          {
+            "name": "Glucose spike",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "defaultValue": 300,
+        "id": "step_time",
+        "maximumValue": 500,
+        "minimumValue": 10,
+        "name": "Step time (s)"
+      },
+      {
+        "defaultValue": 0.1,
+        "id": "initial_glucose",
+        "maximumValue": 10,
+        "minimumValue": 0.1,
+        "stepValue": 0.1,
+        "name": "Initial mucosal glucose (mM)"
+      },
+      {
+        "defaultValue": 0.2,
+        "id": "final_glucose",
+        "maximumValue": 10,
+        "minimumValue": 0.1,
+        "stepValue": 0.1,
+        "name": "Final mucosal glucose (mM)"
+      },
+      {
+        "defaultValue": 20,
+        "id": "peak_glucose",
+        "maximumValue": 100,
+        "minimumValue": 1,
+        "name": "Peak mucosal glucose (mM)",
+        "visible": "stimulus_protocol == 2"
+      }
+    ],
+    "output": {
+      "data": [
+        {
+          "id": "t",
+          "name": "parameters/time"
+        },
+        {
+          "id": "glucose_m",
+          "name": "Apical_concentrations/glucose_m"
+        },
+        {
+          "id": "glucose_i",
+          "name": "Cell_concentration/glucose_i"
+        },
+        {
+          "id": "Na_i",
+          "name": "Cell_concentration/Na_i"
+        },
+        {
+          "id": "K_i",
+          "name": "Cell_concentration/K_i"
+        }
+      ],
+      "plots": [
+        {
+          "xAxisTitle": "Time (s)",
+          "xValue": "t",
+          "yAxisTitle": "Mucosal glucose (mM)",
+          "yValue": "glucose_m"
+        },
+        {
+          "xAxisTitle": "Time (s)",
+          "xValue": "t",
+          "yAxisTitle": "Intracellular glucose (mM)",
+          "yValue": "glucose_i"
+        },
+        {
+          "xAxisTitle": "Time (s)",
+          "xValue": "t",
+          "yAxisTitle": "Intracellular Na (mM)",
+          "yValue": "Na_i"
+        },
+        {
+          "xAxisTitle": "Time (s)",
+          "xValue": "t",
+          "yAxisTitle": "Intracellular K (mM)",
+          "yValue": "K_i"
+        }
+      ]
+    },
+    "parameters": [
+      {
+        "name": "Apical_concentrations/glucose_stim_protocol",
+        "value": "(stimulus_protocol == 1) ? 1.0 : 2.0"
+      },
+      {
+        "name": "Apical_concentrations/glucose_initial",
+        "value": "initial_glucose / 1000.0"
+      },
+      {
+        "name": "Apical_concentrations/glucose_f",
+        "value": "final_glucose / 1000.0"
+      },
+      {
+        "name": "Apical_concentrations/glucose_step",
+        "value": "step_time"
+      },
+      {
+        "name": "Apical_concentrations/glucose_peak",
+        "value": "(stimulus_protocol == 2) ? peak_glucose / 1000.0 : 1.0"
+      }
+    ]
+  }
